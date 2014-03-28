@@ -44,9 +44,9 @@ Bmob是BaaS模式的云服务平台，能协助App开发者，以最节省时间
     include_once 'lib/BmobUser.php';
     try {
 		/*
-		 *  bmobObject 的例子
+		 *  BmobObject 的例子
 	 	*/	
-		$bmobObj = new bmobObject("GameScore");
+		$bmobObj = new BmobObject("GameScore");
 		$res=$bmobObj->create(array("score"=>80,"playerName"=>"game")); //添加对象
 		$res=$bmobObj->get("bd89c6bce9"); // 获取id为bd89c6bce9的对象
 		$res=$bmobObj->get(); //获取所有对象
@@ -57,9 +57,9 @@ Bmob是BaaS模式的云服务平台，能协助App开发者，以最节省时间
 		$res=$bmobObj->increment("bd89c6bce9","score",array(2)); //id为bd89c6bce9的field score数值加2
 	
 		/*
-		 *  bmobUser 的例子
+		 *  BmobUser 的例子
 		 */	
-		$bmobUser = new bmobUser();
+		$bmobUser = new BmobUser();
 		$res = $bmobUser->register(array("username"=>"cooldude117", "password"=>"p_n7!-e8", "phone"=>"415-392-0202", "email"=>"bmobtest111@126.com")); //用户注册, 其中username和password为必填字段
 		$res = $bmobUser->login("cooldude117","p_n7!-e8"); //用户登录, 第一个参数为用户名,第二个参数为密码
 		$res = $bmobUser->get("415b8fe99a"); // 获取id为415b8fe99a用户的信息
