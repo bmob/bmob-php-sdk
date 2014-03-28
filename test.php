@@ -1,14 +1,14 @@
 <?php
-include_once 'bmobObject.php';
-include_once 'bmobUser.php';
+include_once 'lib/BmobObject.class.php';
+include_once 'lib/BmobUser.class.php';
 
 try {
 	
 	/*
 	 *  bmobObject 的例子
 	 */	
-	$bmobObj = new bmobObject("GameScore");
-	$res=$bmobObj->create(array("score"=>80,"playerName"=>"game")); //添加对象
+	$bmobObj = new BmobObject("GameScore");
+	$res=$bmobObj->create(array("playerName"=>"game","score"=>20)); //添加对象
 	$res=$bmobObj->get("bd89c6bce9"); // 获取id为bd89c6bce9的对象
 	$res=$bmobObj->get(); // 获取所有对象
 	$res=$bmobObj->update("bd89c6bce9", array("score"=>60,"playerName"=>"game")); //更新对象bd89c6bce9, 任何您未指定的key都不会更改,所以您可以只更新对象数据的一个子集
@@ -20,7 +20,7 @@ try {
 	/*
 	 *  bmobUser 的例子
 	 */	
-	$bmobUser = new bmobUser();
+	$bmobUser = new BmobUser();
 	$res = $bmobUser->register(array("username"=>"cooldude117", "password"=>"p_n7!-e8", "phone"=>"415-392-0202", "email"=>"bmobtest111@126.com")); //用户注册, 其中username和password为必填字段
 	$res = $bmobUser->login("cooldude117","p_n7!-e8"); //用户登录, 第一个参数为用户名,第二个参数为密码
 	$res = $bmobUser->get("415b8fe99a"); // 获取id为415b8fe99a用户的信息
@@ -33,6 +33,3 @@ try {
 } catch (Exception $e) {
 	echo $e;
 }
-
-
-
