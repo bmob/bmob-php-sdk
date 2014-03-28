@@ -6,4 +6,4 @@ Bmob是BaaS模式的云服务平台，能协助App开发者，以最节省时间
 #Bmob官方#
 [Bmob官方链接地址](http://www.bmob.cn "Bmob官方链接地址") 
 
-[Bmob官方微博地址](http://weibo.com/bmob "Bmob官方微博地址") 
+[Bmob官方微博地址](http://weibo.com/bmob/ "Bmob官方微博地址") 
