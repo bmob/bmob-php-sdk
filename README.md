@@ -19,9 +19,9 @@ Bmob是BaaS模式的云服务平台，能协助App开发者，以最节省时间
 一、安装
 =========================
 
-打开BmobConfig.php，填写APPID（后台获取“应用密钥”中的Application ID）和RESTKEY（后台获取“应用密钥”中的REST API Key）相应的值。
+打开lib/BmobConfig.class.php，填写APPID（后台获取“应用密钥”中的Application ID）和RESTKEY（后台获取“应用密钥”中的REST API Key）相应的值。
 
-### BmobConfig.php ###
+### BmobConfig.class.php ###
 
 
     class BmobConfig{
@@ -40,8 +40,8 @@ Bmob是BaaS模式的云服务平台，能协助App开发者，以最节省时间
 项目中的文件test.php演示了如何使用bmob提供的php sdk相关的方法。
 
     <?php
-    include_once 'lib/BmobObject.php';
-    include_once 'lib/BmobUser.php';
+    include_once 'lib/BmobObject.class.php';
+    include_once 'lib/BmobUser.class.php';
     try {
 		/*
 		 *  BmobObject 的例子
