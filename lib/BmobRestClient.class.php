@@ -20,7 +20,7 @@ class BmobRestClient
 	public $responseData = '';
 
 	
-	public function __construct()
+	protected function __construct()
 	{
 		$this->_bmobAppid = BmobConfig::APPID;
     	$this->_bmobRestkey = BmobConfig::RESTKEY;
@@ -42,7 +42,7 @@ class BmobRestClient
 	 * 所有的请求都通过这个方法发送
 	 * @param  $args
 	 */
-	public function sendRequest($args)
+	protected function sendRequest($args)
 	{
 		$c = curl_init();
 		curl_setopt($c, CURLOPT_TIMEOUT, 30);
@@ -133,7 +133,7 @@ class BmobRestClient
 	 * @param string $type
 	 * @param array $params
 	 */	
-	public function dataType($type, $params)
+	protected function dataType($type, $params)
 	{
 		if ($type != '') {
 			switch ($type) {
@@ -170,7 +170,7 @@ class BmobRestClient
 	 * @param $msg
 	 * @param $code
 	 */
-	public function throwError($msg,$code=0)
+	protected function throwError($msg,$code=0)
 	{
 		throw new BmobException($msg,$code);
 	}
