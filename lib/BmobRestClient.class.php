@@ -195,7 +195,12 @@ class BmobRestClient
 				return true;
 			}
 			else{
-				return json_decode($response);
+				$decodeResponse = json_decode($response);
+				//把云端代码返回值从result中剥离出来
+				if(isset($decodeResponse->result)){
+					$decodeResponse = $decodeResponse->result;
+				}
+				return $decodeResponse;
 			}
 		}
 	}
