@@ -9,6 +9,12 @@ include_once 'BmobRestClient.class.php';
  * @license http://www.gnu.org/copyleft/lesser.html Distributed under the Lesser General Public License (LGPL)
  */
 class BmobUser extends BmobRestClient{
+
+	public function __construct($class = '')
+	{
+		parent::__construct();
+	}
+	
 	
 	/**
 	 * 用户注册, 其中username和password为必填字段
