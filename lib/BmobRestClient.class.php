@@ -156,6 +156,17 @@ class BmobRestClient
 						"amount" => $params[0]
 					);
 					break;
+				case 'deleteField':
+					$return = array(
+						"__op" => "Delete",						
+					);
+					break;	
+				case 'addArray':
+					$return = array(
+						"__op" => "Add",
+						"objects" => $params,								
+					);
+					break;		
 				default:
 					$return = false;
 					break;	
@@ -188,8 +199,7 @@ class BmobRestClient
 			$msg = isset($error['error'])?$error['error']:"";
 			$code = isset($error['code'])?$error['code']:0;
 			$this->throwError($msg, $code);
-		}
-		else{
+		}else{
 			//check for empty return
 			if($response == '{}'){
 				return true;

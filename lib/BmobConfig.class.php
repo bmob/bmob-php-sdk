@@ -7,7 +7,7 @@
  */
 class BmobConfig
 {
-    const APPID = 'af1099e3465dd639fa497297f0bd0a83';  //后台"应用密钥"中的Application ID
-    const RESTKEY = '572d6ce34a7649138a2c5e45f6b61690';  //后台"应用密钥"中的REST API Key
+    const APPID = '85b56934cce1129e59a795da547c68e6';  //后台"应用密钥"中的Application ID
+    const RESTKEY = '42257d72ebd4b8b518084fabda56ae6e';  //后台"应用密钥"中的REST API Key
     const BMOBURL = 'https://api.bmob.cn/1/';  //请勿修改
 }

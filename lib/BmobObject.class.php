@@ -171,6 +171,84 @@ class BmobObject extends BmobRestClient
 		
 	}
 	
+	/**
+	 * 在一个对象中删除一个字段
+	 * @param string $id 对象id
+	 * @param string $field 需要删除的字段
+	 */
+	public function deleteField($id, $field)
+	{
+		
+		if($this->_className != '' && !empty($id) && !empty($field)){
+			
+			$this->data[$field] = $this->dataType('deleteField', $field);
+			
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'PUT',
+				'sendRequestUrl' => 'classes/'.$this->_className.'/'.$id,
+				'data' => $this->data,
+			));
+
+			return $sendRequest;
+			
+		}else {
+			$this->throwError('修改对象时请指定对象id');
+		}	
+		
+	}
+
+	/**
+	 * 添加数组数据
+	 * @param string $field 需要修改的字段
+	 * @param string $data 添加的数组
+	 */
+	public function addArray($field, $data)
+	{
+		
+		if($this->_className != '' && !empty($field) && !empty($data)){
+			
+			$this->data[$field] = $this->dataType('addArray', $data);
+			
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'POST',
+				'sendRequestUrl' => 'classes/'.$this->_className,
+				'data' => $this->data,
+			));
+
+			return $sendRequest;
+			
+		}else {
+			$this->throwError('添加对象时请指定对象field或数据');
+		}	
+		
+	}
+
+	/**
+	 * 修改数组数据
+	 * @param string $id id
+	 * @param string $field 需要修改的字段
+	 * @param string $data 修改的数组
+	 */
+	public function updateArray($id, $field, $data)
+	{
+		
+		if($this->_className != '' && !empty($id) &&  !empty($field) && !empty($data)){
+			
+			$this->data[$field] = $this->dataType('addArray', $data);
+			
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'PUT',
+				'sendRequestUrl' => 'classes/'.$this->_className.'/'.$id,
+				'data' => $this->data,
+			));
+
+			return $sendRequest;
+			
+		}else {
+			$this->throwError('修改对象时请指定对象field或数据');
+		}	
+		
+	}	
 
 }
 
