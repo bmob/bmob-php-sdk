@@ -90,7 +90,10 @@ class BmobRestClient
 
 		//生成post data
 		if($args['method'] == 'PUT' || $args['method'] == 'POST'){
-			$postData = json_encode($args['data']);
+			$postData = $args['data'];			
+			if( strpos( $args['sendRequestUrl'], "1/files")===false ) { //非上传文件的操作把body内容变为json
+				$postData = json_encode($args['data']);
+			}
 			// echo "postdata:".$postData;
 			curl_setopt($c, CURLOPT_POSTFIELDS, $postData );
 		}

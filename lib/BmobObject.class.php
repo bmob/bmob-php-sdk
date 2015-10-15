@@ -404,6 +404,47 @@ class BmobObject extends BmobRestClient
 		}	
 	}
 
+
+	/**
+	 * 批量操作
+	 * @param array $data 批量操作的数据
+	 */
+	public function batch($data)
+	{
+		if(!empty($data)){		
+			
+			$this->data["requests"] = $data;
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'POST',
+				'sendRequestUrl' => 'batch',
+				'data' => $this->data,
+			));
+			return $sendRequest;			
+		}else {
+			$this->throwError('批量操作时请指定操作的数据');
+		}	
+	}
+
+	/**
+	 * 上传文件
+	 * @param array $data 批量操作的数据
+	 */
+	public function uploadFile($fileName, $filePath)
+	{
+		if(!empty($fileName) && !empty($filePath) ){		
+			
+			$this->data = file_get_contents($filePath);
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'POST',
+				'sendRequestUrl' => 'files/'.base64_encode($fileName),
+				'data' => $this->data,
+			));
+			return $sendRequest;			
+		} else {
+			$this->throwError('请指导文件名和文件路径');
+		}	
+	}	
+
 }
 
 ?>

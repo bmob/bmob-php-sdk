@@ -33,7 +33,31 @@ try {
 	//修改对象的一对多的关联数据
 	// $res=$bmobObj->updateRelRelation("ce7f6de5c2", "opponents", array(array("Player","30BRpppy"), array("Player","g5s7EEEV"))); 
 	//删除对象的关联数据
-	$res=$bmobObj->deleteRelation("ce7f6de5c2", "opponents", array(array("Player","30BRpppy"), array("Player","g5s7EEEV"))); 
+	// $res=$bmobObj->deleteRelation("ce7f6de5c2", "opponents", array(array("Player","30BRpppy"), array("Player","g5s7EEEV"))); 
+
+	//批量操作
+	// $data=array(
+	// 	array(
+	// 		"method"=>"POST",
+	// 		"path"=>"/1/classes/GameScore",
+	// 		"body"=>array(
+	// 					"score"=>1337,
+	// 					"playerName"=>"Sean Plott",
+	// 				),
+	// 	),
+	// 	array(
+	// 		"method"=>"POST",
+	// 		"path"=>"/1/classes/GameScore",
+	// 		"body"=>array(
+	// 					"score"=>1338,
+	// 					"playerName"=>"ZeroCool",
+	// 				),
+	// 	),		
+	// );
+	// $res=$bmobObj->batch($data);
+
+	//上传文件
+	$res=$bmobObj->uploadFile("heelo.txt","http://file.bmob.cn/M02/17/99/oYYBAFYfXS6AKB96AAAABNsGNwg872.txt");
 
 	/*
 	 *  bmobUser 的例子
