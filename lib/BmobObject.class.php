@@ -4,8 +4,6 @@ include_once 'BmobRestClient.class.php';
 
 /**
  * BmobObject object对象类
- * @author newjueqi
- * @authort 2014.03.28
  * @license http://www.gnu.org/copyleft/lesser.html Distributed under the Lesser General Public License (LGPL)
  */
 class BmobObject extends BmobRestClient
@@ -245,10 +243,166 @@ class BmobObject extends BmobRestClient
 			return $sendRequest;
 			
 		}else {
-			$this->throwError('修改对象时请指定对象field或数据');
+			$this->throwError('修改对象时请指定对象id和field和数据');
 		}	
 		
 	}	
+
+	/**
+	 * 删除数组数据
+	 * @param string $id id
+	 * @param string $field 需要修改的字段
+	 * @param string $data 删除的数组
+	 */
+	public function deleteArray($id, $field, $data)
+	{
+		
+		if($this->_className != '' && !empty($id) &&  !empty($field) && !empty($data)){
+			
+			$this->data[$field] = $this->dataType('delArray', $data);
+			
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'PUT',
+				'sendRequestUrl' => 'classes/'.$this->_className.'/'.$id,
+				'data' => $this->data,
+			));
+
+			return $sendRequest;
+			
+		}else {
+			$this->throwError('删除时请指定对象id和field和数据');
+		}	
+	}		
+
+	/**
+	 * 添加关联对象（１对１）
+	 * @param string $field 需要添加关联的字段
+	 * @param string $otherObject 需要修改的字段
+	 * @param string $otherObjectId 删除的数组
+	 */
+	public function addRelPointer($field, $otherObject, $otherObjectId)
+	{
+		
+		if($this->_className != '' && !empty($field) &&  !empty($otherObject) && !empty($otherObjectId)){
+			
+			$this->data[$field] = $this->dataType('addRelPointer', array($otherObject, $otherObjectId));
+
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'POST',
+				'sendRequestUrl' => 'classes/'.$this->_className,
+				'data' => $this->data,
+			));
+
+			return $sendRequest;
+			
+		}else {
+			$this->throwError('添加关联对象时请指定对象id和field和数据');
+		}	
+	}	
+
+	/**
+	 * 添加关联对象（１对多）
+	 * @param string $field 需要添加关联的字段
+	 * @param array $data 关联的数据
+	 */
+	public function addRelRelation($field, $data)
+	{
+		
+		if($this->_className != '' && !empty($field) &&  !empty($data)){
+			
+			$this->data[$field] = $this->dataType('addRelRelation', $data);
+
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'POST',
+				'sendRequestUrl' => 'classes/'.$this->_className,
+				'data' => $this->data,
+			));
+
+			return $sendRequest;
+			
+		}else {
+			$this->throwError('添加关联对象时请指定对象id和data');
+		}	
+	}	
+
+	/**
+	 * 修改关联对象（１对１）
+	 * @param string $id id
+	 * @param string $field 需要添加关联的字段
+	 * @param string $otherObject 需要修改的字段
+	 * @param string $otherObjectId 删除的数组
+	 */
+	public function updateRelPointer($id, $field, $otherObject, $otherObjectId)
+	{
+		
+		if($this->_className != '' && !empty($field) &&  !empty($otherObject) && !empty($otherObjectId)){
+			
+			$this->data[$field] = $this->dataType('addRelPointer', array($otherObject, $otherObjectId));
+
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'PUT',
+				'sendRequestUrl' => 'classes/'.$this->_className.'/'.$id,
+				'data' => $this->data,
+			));
+
+			return $sendRequest;
+			
+		}else {
+			$this->throwError('修改关联对象时请指定对象id和field和数据');
+		}	
+	}	
+
+	/**
+	 * 修改关联对象（１对多）
+	 * @param string $id 
+	 * @param string $field 需要添加关联的字段
+	 * @param array $data 关联的数据
+	 */
+	public function updateRelRelation($id, $field, $data)
+	{
+		
+		if($this->_className != '' && !empty($id) &&  !empty($field) && !empty($data)){
+			
+			$this->data[$field] = $this->dataType('addRelRelation', $data);
+
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'PUT',
+				'sendRequestUrl' => 'classes/'.$this->_className.'/'.$id,
+				'data' => $this->data,
+			));
+
+			return $sendRequest;
+			
+		}else {
+			$this->throwError('修改关联对象时请指定对象id和field和data');
+		}	
+	}
+
+	/**
+	 * 删除关联对象
+	 * @param string $id 
+	 * @param string $field 需要添加关联的字段
+	 * @param array $data 关联的数据
+	 */
+	public function deleteRelation($id, $field, $data)
+	{
+		
+		if($this->_className != '' && !empty($id) &&  !empty($field) && !empty($data)){
+			
+			$this->data[$field] = $this->dataType('removeRelation', $data);
+
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'PUT',
+				'sendRequestUrl' => 'classes/'.$this->_className.'/'.$id,
+				'data' => $this->data,
+			));
+
+			return $sendRequest;
+			
+		}else {
+			$this->throwError('删除关联对象时请指定对象id和field和data');
+		}	
+	}
 
 }
 

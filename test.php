@@ -17,9 +17,23 @@ try {
 	// $res=$bmobObj->increment("bd89c6bce9","score",array(-2)); //id为bd89c6bce9的field score数值减2
 	// $res=$bmobObj->increment("bd89c6bce9","score",array(2)); //id为bd89c6bce9的field score数值加2
 	// $res=$bmobObj->deleteField("ZS5wHHHV","score"); //在一个对象中删除一个字段
-	// $res=$bmobObj->addArray("list",array("person1","person2")); //添加一行记录，在对象字段list中添加数组数据
-	// $res=$bmobObj->updateArray("ZS5wHHHV","list",array("person3","person2")); //修改对象id为"ZS5wHHHV"中数组字段list的数组数据
+	// $res=$bmobObj->addArray("list",array("person1","person2")); //在对象字段list中添加数组数据
+	// $res=$bmobObj->updateArray("ZS5wHHHV","list",array("person3","person2")); //修改对象id为"ZS5wHHHV"中数组字段list的数组
+	// $res=$bmobObj->deleteArray("ZS5wHHHV","list",array("person3","person2")); //删除对象id为"ZS5wHHHV"中数组字段list的数组
 
+	//数据关联
+	//添加关联关系
+
+	//在字段添加一行记录并在game添加一个关联关系，指向Game对象,　其id为Vn7r999S
+	// $res=$bmobObj->addRelPointer("game","Game","Vn7r999S"); 
+	//在字段添加一行记录并在opponents添加多个关联关系，指向Player对象
+	// $res=$bmobObj->addRelRelation("opponents",array(array("Player","30BRpppy"),array("Player","g5s7EEEV"))); 
+	//修改对象的关联数据，指向Game对象,　其id为Vn7r999S
+	// $res=$bmobObj->updateRelPointer("794030b43a", "game", "Game", "Vn7r999S"); 
+	//修改对象的一对多的关联数据
+	// $res=$bmobObj->updateRelRelation("ce7f6de5c2", "opponents", array(array("Player","30BRpppy"), array("Player","g5s7EEEV"))); 
+	//删除对象的关联数据
+	$res=$bmobObj->deleteRelation("ce7f6de5c2", "opponents", array(array("Player","30BRpppy"), array("Player","g5s7EEEV"))); 
 
 	/*
 	 *  bmobUser 的例子

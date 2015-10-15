@@ -91,7 +91,7 @@ class BmobRestClient
 		//生成post data
 		if($args['method'] == 'PUT' || $args['method'] == 'POST'){
 			$postData = json_encode($args['data']);
-			
+			// echo "postdata:".$postData;
 			curl_setopt($c, CURLOPT_POSTFIELDS, $postData );
 		}
 		
@@ -166,7 +166,56 @@ class BmobRestClient
 						"__op" => "Add",
 						"objects" => $params,								
 					);
+					break;	
+				case 'updateArray':
+					$return = array(
+						"__op" => "AddUnique",
+						"objects" => $params,								
+					);
+					break;						
+				case 'delArray':
+					$return = array(
+						"__op" => "Remove",
+						"objects" => $params,								
+					);
 					break;		
+				case 'addRelPointer':
+					$return = array(
+						"__type" => "Pointer",
+						"className" => $params[0],
+						"objectId" => $params[1],								
+					);
+					break;	
+				case 'addRelRelation':
+					$data = array();
+					foreach( $params as $param ) {
+						$data[] = array(
+										"__type" => "Pointer",
+										"className" => $param[0],
+										"objectId" => $param[1],								
+									);
+					}
+					$return = array(
+						"__op" => "AddRelation",
+						"objects" => $data,
+												
+					);
+					break;		
+				case 'removeRelation':
+					$data = array();
+					foreach( $params as $param ) {
+						$data[] = array(
+										"__type" => "Pointer",
+										"className" => $param[0],
+										"objectId" => $param[1],								
+									);
+					}
+					$return = array(
+						"__op" => "RemoveRelation",
+						"objects" => $data,
+												
+					);
+					break;																				
 				default:
 					$return = false;
 					break;	
