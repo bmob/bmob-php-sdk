@@ -485,6 +485,63 @@ class BmobObject extends BmobRestClient
 		}	
 	}	
 
+	/**
+	 * 创建角色
+	 * @param array $data 参数
+	 */
+	public function createRole($data)
+	{
+		if(!empty($data) ){		
+			
+			$this->data = $data;
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'POST',
+				'sendRequestUrl' => 'roles',
+				'data' => $this->data,
+			));
+			return $sendRequest;			
+		} else {
+			$this->throwError('参数不能为空');
+		}	
+	}
+
+	/**
+	 * 获取角色
+	 * @param  $id id
+	 */
+	public function getRole($id)
+	{
+		if(!empty($id) ){		
+			
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'GET',
+				'sendRequestUrl' => 'roles/'.$id,
+			));
+			return $sendRequest;			
+		} else {
+			$this->throwError('id不能为空');
+		}	
+	}
+
+	/**
+	 * 更新角色
+	 * @param  $id id
+	 */
+	public function updateRole($id, $field, $op, $data)
+	{
+		if(!empty($id) && !empty($field) && !empty($op) && !empty($data) ){		
+			
+			$this->data[$field] = array("__op"=> $op, "objects"=>$data);
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'PUT',
+				'data' => $this->data,
+				'sendRequestUrl' => 'roles/'.$id,
+			));
+			return $sendRequest;			
+		} else {
+			$this->throwError('参数不能为空');
+		}	
+	}	
 }
 
 ?>

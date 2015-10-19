@@ -193,7 +193,7 @@ class BmobUser extends BmobRestClient{
 			
 	    	return $request;			
 		} else {
-			$this->throwError('密码不能为空');
+			$this->throwError('参数不能为空');
 		}
 		
 	}	

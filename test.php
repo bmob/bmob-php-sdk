@@ -70,12 +70,27 @@ try {
 	// 	"dissolve"=>100, 'gravity'=>"SouthWest","distanceX"=>10,"distanceY"=>10);
 	// $res=$bmobObj->imagesWatermark($data); 
 
+	/*
+	 *  角色的例子
+	 */	
+	// $res = $bmobObj->createRole(array("name"=>"Moderators", "ACL"=>array("*"=>array("read"=>true)))); //创建角色
+	// $res = $bmobObj->getRole("fff849f7d4"); //获取角色
+
+	$data=array(
+			array(
+			  "__type"=>"Pointer",
+              "className"=>"_User",
+              "objectId"=>"WXHsFFFd",				
+			),
+		);
+	$res = $bmobObj->updateRole("fff849f7d4", "users", "AddRelation", $data); //更改角色
+
 
 
 	/*
 	 *  bmobUser 的例子
 	 */	
-	$bmobUser = new BmobUser();
+	// $bmobUser = new BmobUser();
 	// $res = $bmobUser->register(array("username"=>"cooldude117", "password"=>"p_n7!-e8", "phone"=>"415-392-0202", "email"=>"bmobtest111@126.com")); //用户注册, 其中username和password为必填字段
 	// $res = $bmobUser->login("test111@qq.com","111111"); //用户登录, 第一个参数为用户名,第二个参数为密码
 	// $res = $bmobUser->get("415b8fe99a"); // 获取id为415b8fe99a用户的信息
