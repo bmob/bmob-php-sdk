@@ -80,6 +80,14 @@ class BmobRestClient
     			'X-bmob-Application-Id: '.$this->_bmobAppid,
     			'X-bmob-REST-API-Key: '.$this->_bmobRestkey,
     		));
+		} elseif (strpos($args['sendRequestUrl'], "updateUserPassword") !== false) {
+			//对象的方法
+			curl_setopt($c, CURLOPT_HTTPHEADER, array(
+    			'Content-Type: application/json',
+    			'X-bmob-Application-Id: '.$this->_bmobAppid,
+    			'X-bmob-REST-API-Key: '.$this->_bmobRestkey,
+    			'X-Bmob-Session-Token: '.$args['sessionToken'],
+    		));    		
 		} else {
 			curl_setopt($c, CURLOPT_HTTPHEADER, array(
 				'Content-Type: application/json',
@@ -120,6 +128,7 @@ class BmobRestClient
 		curl_setopt($c, CURLOPT_URL, $url);
 		
 		$response = curl_exec($c);
+		// echo "response_code:".$response;
 		if(!$response) 
 		{ 
 			trigger_error(curl_error($c)); 

@@ -154,11 +154,69 @@ class BmobUser extends BmobRestClient{
 		
 	}
 
-	
+	/**
+	 * 使用短信验证码进行密码重置
+	 * @param string $oldPassword 旧密码
+	 * @param string $newPassword 新密码
+	 */
+	public function resetPasswordBySmsCode($smsCode, $newPassword)
+	{
+		if(!empty($newPassword) || !empty($smsCode)) {
+			$request = $this->sendRequest(array(
+				'method' => 'POST',
+				'sendRequestUrl' => 'resetPasswordBySmsCode/'.$smsCode,
+	    		'data' => array("password"=>$newPassword)
+			));
+	    	return $request;			
+		} else {
+			$this->throwError('密码和短信验证码不能为空');
+		}
+		
+	}	
 
+	/**
+	 * 用户输入一次旧密码做一次校验，旧密码正确才可以修改为新密码
+	 * @param string $userId id
+	 * @param string $sessionToken sessionToken	 
+	 * @param string $oldPassword 旧密码
+	 * @param string $newPassword 新密码
+	 */
+	public function updateUserPassword($userId, $sessionToken, $oldPassword, $newPassword)
+	{
+		if(!empty($oldPassword) || !empty($newPassword) || !empty($userId) || !empty($sessionToken)) {
+			$request = $this->sendRequest(array(
+				'method' => 'PUT',
+				'sendRequestUrl' => 'updateUserPassword/'.$userId,
+				'sessionToken' => $sessionToken,
+	    		'data' => array("oldPassword"=>$newPassword, "newPassword"=>$newPassword)
+			));
+			
+	    	return $request;			
+		} else {
+			$this->throwError('密码不能为空');
+		}
+		
+	}	
 	
-	
-	
+	/**
+	 * 请求验证Email
+	 * @param string $email email
+	 */
+	public function requestEmailVerify($email)
+	{
+		if(!empty($email) ) {
+			$request = $this->sendRequest(array(
+				'method' => 'POST',
+				'sendRequestUrl' => 'requestEmailVerify',
+	    		'data' => array("email"=>$email)
+			));
+			
+	    	return $request;			
+		} else {
+			$this->throwError('email不能为空');
+		}
+		
+	}	
 	
 
 }

@@ -35,7 +35,7 @@ try {
 	//删除对象的关联数据
 	// $res=$bmobObj->deleteRelation("ce7f6de5c2", "opponents", array(array("Player","30BRpppy"), array("Player","g5s7EEEV"))); 
 
-	//批量操作
+	////批量操作
 	// $data=array(
 	// 	array(
 	// 		"method"=>"POST",
@@ -57,20 +57,38 @@ try {
 	// $res=$bmobObj->batch($data);
 
 	//上传文件
-	$res=$bmobObj->uploadFile("heelo.txt","http://file.bmob.cn/M02/17/99/oYYBAFYfXS6AKB96AAAABNsGNwg872.txt");
+	//第一个参数是文件的名称,第二个参数是文件的url(可以是本地路径,最终是通过file_get_contents获取文件内容)
+	// $res=$bmobObj->uploadFile("heelo.txt","http://file.bmob.cn/M02/17/99/oYYBAFYfXS6AKB96AAAABNsGNwg872.txt"); 
+
+
+	// // 生成缩微图
+	// $data=array("image"=>"http://file.bmob.cn/M00/01/49/wKhkA1OEmUmAXRToAAIAco88Nk08205940","mode"=>0, "quality"=>100, 'width'=>100);
+	// $res=$bmobObj->imageThumbnail($data); 
+
+	// // 生成水印
+	// $data=array("image"=>"http://file.bmob.cn/M01/FB/94/oYYBAFVsLzaATYHUAAInI2Hg05M737.jpg","watermark"=>"http://file.bmob.cn/M01/F8/4C/oYYBAFVru0uAa0yyAAAsGVkLsy8979.jpg", 
+	// 	"dissolve"=>100, 'gravity'=>"SouthWest","distanceX"=>10,"distanceY"=>10);
+	// $res=$bmobObj->imagesWatermark($data); 
+
+
 
 	/*
 	 *  bmobUser 的例子
 	 */	
-	// $bmobUser = new BmobUser();
+	$bmobUser = new BmobUser();
 	// $res = $bmobUser->register(array("username"=>"cooldude117", "password"=>"p_n7!-e8", "phone"=>"415-392-0202", "email"=>"bmobtest111@126.com")); //用户注册, 其中username和password为必填字段
-	// $res = $bmobUser->login("cooldude117","p_n7!-e8"); //用户登录, 第一个参数为用户名,第二个参数为密码
+	// $res = $bmobUser->login("test111@qq.com","111111"); //用户登录, 第一个参数为用户名,第二个参数为密码
 	// $res = $bmobUser->get("415b8fe99a"); // 获取id为415b8fe99a用户的信息
 	// $res = $bmobUser->get(); // 获取所有用户的信息
 	// $res = $bmobUser->update("415b8fe99a", "050391db407114d9801c8f2788c6b25a", array("phone"=>"02011111")); // 更新用户的信息
 	// $res = $bmobUser->requestPasswordReset("bmobtest111@126.com"); // 请求重设密码,前提是用户将email与他们的账户关联起来
 	// $res = $bmobUser->delete("415b8fe99a", "050391db407114d9801c8f2788c6b25a"); // 删除id为415b8fe99a的用户, 第一参数是用户id, 第二个参数为sessiontoken,在用户登录或注册后获取, 必填
-	
+	// $res = $bmobUser->resetPasswordBySmsCode("111111", "134554"); // 使用短信验证码进行密码重置
+	// $res = $bmobUser->updateUserPassword("WXHsFFFd", "d365d5834061d9f6805047131893ae13" , "111111", "111111"); //用户输入一次旧密码做一次校验，旧密码正确才可以修改为新密码
+	// $res = $bmobUser->requestEmailVerify("h622222225@126.com"); //请求验证Email
+
+
+
 	/*
      *  BmobCloudCode 的例子
      */ 

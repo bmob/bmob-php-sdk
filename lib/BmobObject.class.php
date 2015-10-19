@@ -445,6 +445,46 @@ class BmobObject extends BmobRestClient
 		}	
 	}	
 
+	/**
+	 * 生成缩微图
+	 * @param array $data 参数
+	 */
+	public function imageThumbnail($data)
+	{
+		if(!empty($data) ){		
+			
+			$this->data = $data;
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'POST',
+				'sendRequestUrl' => 'images/thumbnail',
+				'data' => $this->data,
+			));
+			return $sendRequest;			
+		} else {
+			$this->throwError('参数不能为空');
+		}	
+	}	
+
+	/**
+	 * 生成水印
+	 * @param array $data 参数
+	 */
+	public function imagesWatermark($data)
+	{
+		if(!empty($data) ){		
+			
+			$this->data = $data;
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'POST',
+				'sendRequestUrl' => 'images/watermark',
+				'data' => $this->data,
+			));
+			return $sendRequest;			
+		} else {
+			$this->throwError('参数不能为空');
+		}	
+	}	
+
 }
 
 ?>
