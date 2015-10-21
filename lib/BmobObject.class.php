@@ -542,6 +542,29 @@ class BmobObject extends BmobRestClient
 			$this->throwError('参数不能为空');
 		}	
 	}	
+
+	/**
+	 * 删除角色
+	 * @param  $id id
+	 * @param  $sessionToken sessionToken
+	 */
+	public function deleteRole($id, $sessionToken)
+	{
+		if(!empty($id) && !empty($sessionToken) ){					
+			$sendRequest = $this->sendRequest(array(
+				'method' => 'DELETE',
+				'data' => $this->data,
+				'sessionToken' => $sessionToken,
+				'sendRequestUrl' => 'roles/'.$id,
+			));
+			return $sendRequest;			
+		} else {
+			$this->throwError('参数不能为空');
+		}	
+	}	
+
+
+
 }
 
 ?>

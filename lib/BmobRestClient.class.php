@@ -87,7 +87,14 @@ class BmobRestClient
     			'X-bmob-Application-Id: '.$this->_bmobAppid,
     			'X-bmob-REST-API-Key: '.$this->_bmobRestkey,
     			'X-Bmob-Session-Token: '.$args['sessionToken'],
-    		));    		
+    		));   
+		} elseif (strpos($args['sendRequestUrl'], "roles") !== false && $args['method'] == "DELETE" ) {
+			//对象的方法
+			curl_setopt($c, CURLOPT_HTTPHEADER, array(
+    			'X-bmob-Application-Id: '.$this->_bmobAppid,
+    			'X-bmob-REST-API-Key: '.$this->_bmobRestkey,
+    			'X-Bmob-Session-Token: '.$args['sessionToken'],
+    		));      		 		
 		} else {
 			curl_setopt($c, CURLOPT_HTTPHEADER, array(
 				'Content-Type: application/json',
@@ -102,7 +109,7 @@ class BmobRestClient
 			if( strpos( $args['sendRequestUrl'], "1/files")===false ) { //非上传文件的操作把body内容变为json
 				$postData = json_encode($args['data']);
 			}
-			echo "postdata:".$postData;
+			// echo "postdata:".$postData;
 			curl_setopt($c, CURLOPT_POSTFIELDS, $postData );
 		}
 		
