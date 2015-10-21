@@ -85,11 +85,20 @@ try {
 	// $res = $bmobObj->updateRole("d4642acf90", "users", "AddRelation", $data); //更改角色
 	// $res = $bmobObj->deleteRole("d4642acf90", "d365d5834061d9f6805047131893ae13"); //删除角色
 
-	//推送的例子
+	////推送的例子
+	// 添加设备表
 	// $res = $bmobObj->addInstallations(array("deviceType"=>"ios","deviceToken"=>"abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789","channels"=>array("Giants")));
-	// $res = $bmobObj->updateInstallations("fdcc6a94c6",array("injuryReports"=>true));
-	// $res = $bmobObj->updateInstallations("fdcc6a94c6",array("injuryReports"=>true));
-	$res = $bmobObj->push(array("data"=>array("alert"=>"hello")));
+	// $res = $bmobObj->updateInstallations("fdcc6a94c6",array("injuryReports"=>true)); //更新设备表
+	// $res = $bmobObj->push(array("data"=>array("alert"=>"hello"))); //推送消息
+
+	////订单的例子
+	// $res = $bmobObj->getOrder("fd343232cc6a94c6");  //查询订单
+
+	////短信相关
+	// $res = $bmobObj->sendSms("131xxxxxxxx", "您的验证码是：222222, 有效期是10分钟。"); //发送短信
+	// $res = $bmobObj->sendSmsVerifyCode("131xxxxxxxx");  //发送短信验证码
+	// $res = $bmobObj->verifySmsCode("131xxxxxxxx","028584");  //发送短信验证码
+	// $res = $bmobObj->querySms("6466181");  //查询短信状态
 
 	/*
 	 *  bmobUser 的例子
