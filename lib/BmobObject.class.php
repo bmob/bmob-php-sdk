@@ -717,8 +717,8 @@ class BmobObject extends BmobRestClient
 
 	/**
 	 * 获取app的信息, 指定appId则获取某个app的信息
-	 * @email 登录的用户名
-	 * @password 登录的密码
+	 * @param  $email 登录的用户名
+	 * @param  $password 登录的密码
 	 * @param  $appId  	
 	 */
 	public function getApp($email, $password, $appId=0)
@@ -743,8 +743,8 @@ class BmobObject extends BmobRestClient
 
 	/**
 	 * 创建app
-	 * @email 登录的用户名
-	 * @password 登录的密码	 
+	 * @param  $email 登录的用户名
+	 * @param  $password 登录的密码	 
 	 * @param  $data  	
 	 */
 	public function createApp($email, $password, $data)
@@ -766,13 +766,13 @@ class BmobObject extends BmobRestClient
 
 	/**
 	 * 修改app的信息
-	 * @email 登录的用户名
-	 * @password 登录的密码	 
+	 * @param  $email 登录的用户名
+	 * @param  $password 登录的密码	 
 	 * @param  $data  	
 	 */
 	public function updateApp($email, $password, $id, $data)
 	{
-		if(!empty($email) && !empty($password) && !empty($data) ){
+		if(!empty($email) && !empty($password) && !empty($id) && !empty($data) ){
 			
 			$sendRequest = $this->sendRequest(array(
 				'X-Bmob-Email'=> $email,
@@ -785,7 +785,93 @@ class BmobObject extends BmobRestClient
 		} else {
 			$this->throwError('参数不能为空');
 		}	
-	}		
+	}
+
+	/**
+	 * 获取Schemas的信息
+	 * @param  $masterKey Master-Key
+	 * @param  $schemaName schemaName的名称
+	 * @param  $data  	
+	 */
+	public function getSchemas($masterKey, $schemaName)
+	{
+		if(!empty($masterKey) && !empty($schemaName) ){
+			
+			$sendRequest = $this->sendRequest(array(
+				'X-Bmob-Master-Key'=> $masterKey,				
+				'method' => 'GET',
+				'sendRequestUrl' => "schemas/".$schemaName,
+			));
+			return $sendRequest;			
+		} else {
+			$this->throwError('参数不能为空');
+		}	
+	}	
+
+
+	/**
+	 * create Schemas
+	 * @param  $masterKey Master-Key
+	 * @param  $schemaName schemaName的名称
+	 * @param  $data  	
+	 */
+	public function createSchemas($masterKey, $schemaName, $data)
+	{
+		if(!empty($masterKey) && !empty($schemaName) && !empty($data)){
+			
+			$sendRequest = $this->sendRequest(array(
+				'X-Bmob-Master-Key'=> $masterKey,				
+				'method' => 'POST',
+				'data' => $data,
+				'sendRequestUrl' => "schemas/".$schemaName,
+			));
+			return $sendRequest;			
+		} else {
+			$this->throwError('参数不能为空');
+		}	
+	}	
+
+	/**
+	 * update Schemas
+	 * @param  $masterKey Master-Key
+	 * @param  $schemaName schemaName的名称
+	 * @param  $data  	
+	 */
+	public function updateSchemas($masterKey, $schemaName, $data)
+	{
+		if(!empty($masterKey) && !empty($schemaName) && !empty($data)){
+			
+			$sendRequest = $this->sendRequest(array(
+				'X-Bmob-Master-Key'=> $masterKey,				
+				'method' => 'PUT',
+				'data' => $data,
+				'sendRequestUrl' => "schemas/".$schemaName,
+			));
+			return $sendRequest;			
+		} else {
+			$this->throwError('参数不能为空');
+		}	
+	}	
+
+	/**
+	 * delete Schemas
+	 * @param  $masterKey Master-Key
+	 * @param  $schemaName schemaName的名称
+	 */
+	public function deleteSchemas($masterKey, $schemaName)
+	{
+		if(!empty($masterKey) && !empty($schemaName) ){
+			
+			$sendRequest = $this->sendRequest(array(
+				'X-Bmob-Master-Key'=> $masterKey,				
+				'method' => 'DELETE',
+				'sendRequestUrl' => "schemas/".$schemaName,
+			));
+			return $sendRequest;			
+		} else {
+			$this->throwError('参数不能为空');
+		}	
+	}			
 }
 
 ?>

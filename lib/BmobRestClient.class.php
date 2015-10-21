@@ -101,7 +101,14 @@ class BmobRestClient
     			'X-Bmob-Email: '.$args['X-Bmob-Email'],
     			'X-Bmob-Password: '.$args['X-Bmob-Password'],
     			'Content-Type: application/json',
-    		));          		    		 		
+    		));   
+		} elseif (strpos($args['sendRequestUrl'], "schemas") !== false) {
+			//对象的方法
+			curl_setopt($c, CURLOPT_HTTPHEADER, array(
+				'Content-Type: application/json',
+				'X-bmob-Application-Id: '.$this->_bmobAppid,
+				'X-Bmob-Master-Key: '.$args['X-Bmob-Master-Key'],
+    		));       		       		    		 		
 		} else {
 			curl_setopt($c, CURLOPT_HTTPHEADER, array(
 				'Content-Type: application/json',

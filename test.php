@@ -106,6 +106,29 @@ try {
 	// $res = $bmobObj->createApp("h611115@126.com", "111111", array("appName"=>"myapp111")); //创建一个名为"myapp111"的app
 	// $res = $bmobObj->updateApp("h611115@126.com", "111111", "330xxxxxxxxx578d1f923126547bea5", array("appName"=>"myapp11122")); //创建一个名为"myapp111"的app
 
+	//// schemas相关
+	// $res = $bmobObj->getSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "Game"); //获取表Game的信息
+	// $data=array(
+	// 		"className" => "City",
+	// 		"fields" => array(
+	// 		  "name" => array(
+	// 		  	"type"=>"String",
+	// 		  ),			
+	// 		),
+	// 	);
+	// $res = $bmobObj->createSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "City", $data); //创建表“City”，并添加字段“name”
+	// $data=array(
+	// 		"className" => "City",
+	// 		"fields" => array(
+	// 		  "name" => array(
+	// 		  	"type"=>"String",
+	// 		  	"__op"=>"Delete"  
+	// 		  ),			
+	// 		),
+	// 	);
+	// $res = $bmobObj->updateSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "City", $data); //在表“City”中删除字段“name”
+ 	// $res = $bmobObj->deleteSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "City"); //删除表“City”
+
 	/*
 	 *  bmobUser 的例子
 	 */	
