@@ -70,9 +70,8 @@ try {
 	// 	"dissolve"=>100, 'gravity'=>"SouthWest","distanceX"=>10,"distanceY"=>10);
 	// $res=$bmobObj->imagesWatermark($data); 
 
-	/*
-	 *  角色的例子
-	 */	
+	
+	 //角色的例子
 	// $res = $bmobObj->createRole(array("name"=>"Moderators", "ACL"=>array("*"=>array("read"=>true,"write"=>true)))); //创建角色
 	// $res = $bmobObj->getRole("fff849f7d4"); //获取角色
 
@@ -86,8 +85,11 @@ try {
 	// $res = $bmobObj->updateRole("d4642acf90", "users", "AddRelation", $data); //更改角色
 	// $res = $bmobObj->deleteRole("d4642acf90", "d365d5834061d9f6805047131893ae13"); //删除角色
 
-
-
+	//推送的例子
+	// $res = $bmobObj->addInstallations(array("deviceType"=>"ios","deviceToken"=>"abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789","channels"=>array("Giants")));
+	// $res = $bmobObj->updateInstallations("fdcc6a94c6",array("injuryReports"=>true));
+	// $res = $bmobObj->updateInstallations("fdcc6a94c6",array("injuryReports"=>true));
+	$res = $bmobObj->push(array("data"=>array("alert"=>"hello")));
 
 	/*
 	 *  bmobUser 的例子
