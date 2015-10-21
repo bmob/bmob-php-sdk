@@ -94,7 +94,14 @@ class BmobRestClient
     			'X-bmob-Application-Id: '.$this->_bmobAppid,
     			'X-bmob-REST-API-Key: '.$this->_bmobRestkey,
     			'X-Bmob-Session-Token: '.$args['sessionToken'],
-    		));      		 		
+    		));  
+		} elseif (strpos($args['sendRequestUrl'], "apps") !== false) {
+			//对象的方法
+			curl_setopt($c, CURLOPT_HTTPHEADER, array(
+    			'X-Bmob-Email: '.$args['X-Bmob-Email'],
+    			'X-Bmob-Password: '.$args['X-Bmob-Password'],
+    			'Content-Type: application/json',
+    		));          		    		 		
 		} else {
 			curl_setopt($c, CURLOPT_HTTPHEADER, array(
 				'Content-Type: application/json',

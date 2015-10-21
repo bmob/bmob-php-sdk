@@ -100,6 +100,12 @@ try {
 	// $res = $bmobObj->verifySmsCode("131xxxxxxxx","028584");  //发送短信验证码
 	// $res = $bmobObj->querySms("6466181");  //查询短信状态
 
+	////app相关
+	// $res = $bmobObj->getApp("h611115@126.com", "111111"); //获取全部app的信息
+	// $res = $bmobObj->getApp("h611115@126.com", "111111", "85b5xxxxxxxx9e59a795da547c68e6"); //获取app id 为"85b56934cce1129e59a795da547c68e6"的信息
+	// $res = $bmobObj->createApp("h611115@126.com", "111111", array("appName"=>"myapp111")); //创建一个名为"myapp111"的app
+	// $res = $bmobObj->updateApp("h611115@126.com", "111111", "330xxxxxxxxx578d1f923126547bea5", array("appName"=>"myapp11122")); //创建一个名为"myapp111"的app
+
 	/*
 	 *  bmobUser 的例子
 	 */	
