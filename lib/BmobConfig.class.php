@@ -1,4 +1,5 @@
 <?php
+
 /**
  * bmobConfig 配置文件
  * @author newjueqi
