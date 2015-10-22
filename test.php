@@ -129,12 +129,18 @@ try {
 	// $res = $bmobObj->updateSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "City", $data); //在表“City”中删除字段“name”
  	// $res = $bmobObj->deleteSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "City"); //删除表“City”
 
+
+	//// 时间戳相关
+	// $res = $bmobObj->getTimestamp();  //获取服务器时间
+
 	/*
 	 *  bmobUser 的例子
 	 */	
 	$bmobUser = new BmobUser();
 	// $res = $bmobUser->register(array("username"=>"cooldude117", "password"=>"p_n7!-e8", "phone"=>"415-392-0202", "email"=>"bmobtest111@126.com")); //用户注册, 其中username和password为必填字段
+	// $res = $bmobUser->register(array("mobilePhoneNumber"=>"131xxxxxxxx", "smsCode"=>"502845")); //用户注册, mobilePhoneNumber 就是手机号码，而 smsCode 是使用 请求短信验证码API发送到用户手机上的 6位验证码字符串。如果是新用户且不传入 username，默认用户名将是手机号码。
 	// $res = $bmobUser->login("test111@qq.com","111111"); //用户登录, 第一个参数为用户名,第二个参数为密码
+	// $res = $bmobUser->loginByMobile("131xxxxxxxx","745399"); //用手机号登录, 其中mobilePhoneNumber和smsCode为必填字段
 	// $res = $bmobUser->get("415b8fe99a"); // 获取id为415b8fe99a用户的信息
 	// $res = $bmobUser->get(); // 获取所有用户的信息
 	// $res = $bmobUser->update("415b8fe99a", "050391db407114d9801c8f2788c6b25a", array("phone"=>"02011111")); // 更新用户的信息

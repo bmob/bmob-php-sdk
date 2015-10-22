@@ -17,14 +17,13 @@ class BmobUser extends BmobRestClient{
 	
 	
 	/**
-	 * 用户注册, 其中username和password为必填字段
-	 * @param array $data 需要传入的参数, 其中username和password为必填参数
+	 * 用户注册
+	 * @param array $data 需要传入的参数
 	 */	
 	public function register($data = array())
 	{
 
-		if ( isset($data['username']) && isset($data['password']) 
-		&& $data['username'] != '' && $data['password'] != '') {
+		if ( !empty($data) ) {
 			$request = $this->sendRequest(array(
 				'method' => 'POST',
 	    		'sendRequestUrl' => 'users',
@@ -33,7 +32,7 @@ class BmobUser extends BmobRestClient{
 	    	return $request;
 			
 		} else {
-			$this->throwError('用户名和密码不能为空');
+			$this->throwError('输入参数不能为空');
 		}
 	}
 	
@@ -57,7 +56,28 @@ class BmobUser extends BmobRestClient{
 		} else {
 			$this->throwError('用户名和密码不能为空');
 		}
-	
+	}
+
+	/**
+	 * 用手机号登录, 其中mobilePhoneNumber和smsCode为必填字段
+	 * @param string $mobilePhoneNumber 手机号
+	 * @param string $smsCode 验证码
+	 */		
+	public function loginByMobile($mobilePhoneNumber, $smsCode)
+	{
+		if (!empty($mobilePhoneNumber) || !empty($smsCode)) {
+			$request = $this->sendRequest(array(
+				'method' => 'POST',
+	    		'sendRequestUrl' => 'users',
+		    	'data' => array(
+		    		'mobilePhoneNumber' => $mobilePhoneNumber,
+		    		'smsCode' => $smsCode
+		    	)
+			));
+	    	return $request;			
+		} else {
+			$this->throwError('手机号和验证码不能为空');
+		}
 	}
 
 	/**

@@ -871,7 +871,21 @@ class BmobObject extends BmobRestClient
 		} else {
 			$this->throwError('参数不能为空');
 		}	
-	}			
+	}	
+
+	/**
+	 * 获取服务器时间
+	 */
+	public function getTimestamp()
+	{
+		$sendRequest = $this->sendRequest(array(			
+			'method' => 'GET',
+			'sendRequestUrl' => "timestamp",
+		));
+		return $sendRequest;			
+		
+	}
+
 }
 
 ?>
