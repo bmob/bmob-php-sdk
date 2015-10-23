@@ -4,7 +4,6 @@ include_once 'BmobRestClient.class.php';
 
 /**
  * BmobUser User对象类
- * @author newjueqi
  * @authort 2014.03.28
  * @license http://www.gnu.org/copyleft/lesser.html Distributed under the Lesser General Public License (LGPL)
  */

@@ -1,6 +1,17 @@
 <?php
 include_once 'lib/BmobObject.class.php';
 include_once 'lib/BmobUser.class.php';
+include_once 'lib/BmobBatch.class.php';
+include_once 'lib/BmobFile.class.php';
+include_once 'lib/BmobImage.class.php';
+include_once 'lib/BmobRole.class.php';
+include_once 'lib/BmobPush.class.php';
+include_once 'lib/BmobOrder.class.php';
+include_once 'lib/BmobSms.class.php';
+include_once 'lib/BmobApp.class.php';
+include_once 'lib/BmobSchemas.class.php';
+include_once 'lib/BmobTimestamp.class.php';
+include_once 'lib/BmobCloudCode.class.php';
 
 try {
 
@@ -36,6 +47,7 @@ try {
     // $res=$bmobObj->deleteRelation("ce7f6de5c2", "opponents", array(array("Player","30BRpppy"), array("Player","g5s7EEEV")));
 
     ////批量操作
+    // $bmobBatch = new BmobBatch();
     // $data=array(
     // 	array(
     // 		"method"=>"POST",
@@ -54,26 +66,29 @@ try {
     // 				),
     // 	),
     // );
-    // $res=$bmobObj->batch($data);
+    // $res=$bmobBatch->batch($data);
 
     //上传文件
+    // $bmobFile = new BmobFile();
     //第一个参数是文件的名称,第二个参数是文件的url(可以是本地路径,最终是通过file_get_contents获取文件内容)
-    // $res=$bmobObj->uploadFile("heelo.txt","http://file.bmob.cn/M02/17/99/oYYBAFYfXS6AKB96AAAABNsGNwg872.txt");
+    // $res=$bmobFile->uploadFile("heelo.txt","http://file.bmob.cn/M02/17/99/oYYBAFYfXS6AKB96AAAABNsGNwg872.txt");
 
 
     // // 生成缩微图
+    // $bmobImage = new BmobImage();
     // $data=array("image"=>"http://file.bmob.cn/M00/01/49/wKhkA1OEmUmAXRToAAIAco88Nk08205940","mode"=>0, "quality"=>100, 'width'=>100);
-    // $res=$bmobObj->imageThumbnail($data);
+    // $res=$bmobImage->imageThumbnail($data);
 
     // // 生成水印
     // $data=array("image"=>"http://file.bmob.cn/M01/FB/94/oYYBAFVsLzaATYHUAAInI2Hg05M737.jpg","watermark"=>"http://file.bmob.cn/M01/F8/4C/oYYBAFVru0uAa0yyAAAsGVkLsy8979.jpg",
     // 	"dissolve"=>100, 'gravity'=>"SouthWest","distanceX"=>10,"distanceY"=>10);
-    // $res=$bmobObj->imagesWatermark($data);
+    // $res=$bmobImage->imagesWatermark($data);
 
 
     //角色的例子
-    // $res = $bmobObj->createRole(array("name"=>"Moderators", "ACL"=>array("*"=>array("read"=>true,"write"=>true)))); //创建角色
-    // $res = $bmobObj->getRole("fff849f7d4"); //获取角色
+    // $bmobRole = new BmobRole();
+    // $res = $bmobRole->createRole(array("name"=>"Mo1derators", "ACL"=>array("*"=>array("read"=>true,"write"=>true)))); //创建角色
+    // $res = $bmobRole->getRole("fff849f7d4"); //获取角色
 
     // $data=array(
     // 		array(
@@ -82,32 +97,37 @@ try {
     //              "objectId"=>"WXHsFFFd",
     // 		),
     // 	);
-    // $res = $bmobObj->updateRole("d4642acf90", "users", "AddRelation", $data); //更改角色
-    // $res = $bmobObj->deleteRole("d4642acf90", "d365d5834061d9f6805047131893ae13"); //删除角色
+    // $res = $bmobRole->updateRole("d4642acf90", "users", "AddRelation", $data); //更改角色
+    // $res = $bmobRole->deleteRole("d4642acf90", "d365d5834061d9f6805047131893ae13"); //删除角色
 
     ////推送的例子
+    // $bmobPush = new BmobPush();
     // 添加设备表
-    // $res = $bmobObj->addInstallations(array("deviceType"=>"ios","deviceToken"=>"abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789","channels"=>array("Giants")));
-    // $res = $bmobObj->updateInstallations("fdcc6a94c6",array("injuryReports"=>true)); //更新设备表
-    // $res = $bmobObj->push(array("data"=>array("alert"=>"hello"))); //推送消息
+    // $res = $bmobPush->addInstallations(array("deviceType"=>"ios","deviceToken"=>"abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789","channels"=>array("Giants")));
+    // $res = $bmobPush->updateInstallations("fdcc6a94c6",array("injuryReports"=>true)); //更新设备表
+    // $res = $bmobPush->push(array("data"=>array("alert"=>"hello"))); //推送消息
 
     ////订单的例子
-    // $res = $bmobObj->getOrder("fd343232cc6a94c6");  //查询订单
+    // $bmobOrder = new BmobOrder();
+    // $res = $bmobOrder->getOrder("fd343232cc6a94c6");  //查询订单
 
     ////短信相关
-    // $res = $bmobObj->sendSms("131xxxxxxxx", "您的验证码是：222222, 有效期是10分钟。"); //发送短信
-    // $res = $bmobObj->sendSmsVerifyCode("131xxxxxxxx");  //发送短信验证码
-    // $res = $bmobObj->verifySmsCode("131xxxxxxxx","028584");  //发送短信验证码
-    // $res = $bmobObj->querySms("6466181");  //查询短信状态
+    // $bmobSms = new BmobSms();
+    // $res = $bmobSms->sendSms("131xxxxxxxx", "您的验证码是：222222, 有效期是10分钟。"); //发送短信
+    // $res = $bmobSms->sendSmsVerifyCode("131xxxxxxxx");  //发送短信验证码
+    // $res = $bmobSms->verifySmsCode("131xxxxxxxx","028584");  //发送短信验证码
+    // $res = $bmobSms->querySms("6466181");  //查询短信状态
 
     ////app相关
-    // $res = $bmobObj->getApp("h611115@126.com", "111111"); //获取全部app的信息
-    // $res = $bmobObj->getApp("h611115@126.com", "111111", "85b5xxxxxxxx9e59a795da547c68e6"); //获取app id 为"85b56934cce1129e59a795da547c68e6"的信息
-    // $res = $bmobObj->createApp("h611115@126.com", "111111", array("appName"=>"myapp111")); //创建一个名为"myapp111"的app
-    // $res = $bmobObj->updateApp("h611115@126.com", "111111", "330xxxxxxxxx578d1f923126547bea5", array("appName"=>"myapp11122")); //创建一个名为"myapp111"的app
+    // $bmobApp = new BmobApp();
+    // $res = $bmobApp->getApp("h611115@126.com", "111111"); //获取全部app的信息
+    // $res = $bmobApp->getApp("h611115@126.com", "111111", "85b5xxxxxxxx9e59a795da547c68e6"); //获取app id 为"85b56934cce1129e59a795da547c68e6"的信息
+    // $res = $bmobApp->createApp("h611115@126.com", "111111", array("appName"=>"myapp111")); //创建一个名为"myapp111"的app
+    // $res = $bmobApp->updateApp("h611115@126.com", "111111", "330xxxxxxxxx578d1f923126547bea5", array("appName"=>"myapp11122")); //创建一个名为"myapp111"的app
 
     //// schemas相关
-    // $res = $bmobObj->getSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "Game"); //获取表Game的信息
+    // $bmobSchemas = new BmobSchemas();
+    // $res = $bmobSchemas->getSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "Game"); //获取表Game的信息
     // $data=array(
     // 		"className" => "City",
     // 		"fields" => array(
@@ -116,7 +136,7 @@ try {
     // 		  ),
     // 		),
     // 	);
-    // $res = $bmobObj->createSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "City", $data); //创建表“City”，并添加字段“name”
+    // $res = $bmobSchemas->createSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "City", $data); //创建表“City”，并添加字段“name”
     // $data=array(
     // 		"className" => "City",
     // 		"fields" => array(
@@ -126,12 +146,13 @@ try {
     // 		  ),
     // 		),
     // 	);
-    // $res = $bmobObj->updateSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "City", $data); //在表“City”中删除字段“name”
-    // $res = $bmobObj->deleteSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "City"); //删除表“City”
+    // $res = $bmobSchemas->updateSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "City", $data); //在表“City”中删除字段“name”
+    // $res = $bmobSchemas->deleteSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "City"); //删除表“City”
 
 
     //// 时间戳相关
-    // $res = $bmobObj->getTimestamp();  //获取服务器时间
+    $bmobTimestamp = new BmobTimestamp();
+    $res = $bmobTimestamp->getTimestamp();  //获取服务器时间
 
     /*
      *  bmobUser 的例子
