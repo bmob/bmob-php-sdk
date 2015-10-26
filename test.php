@@ -12,6 +12,7 @@ include_once 'lib/BmobApp.class.php';
 include_once 'lib/BmobSchemas.class.php';
 include_once 'lib/BmobTimestamp.class.php';
 include_once 'lib/BmobCloudCode.class.php';
+include_once 'lib/BmobBql.class.php';
 
 try {
 
@@ -151,8 +152,12 @@ try {
 
 
     //// 时间戳相关
-    $bmobTimestamp = new BmobTimestamp();
-    $res = $bmobTimestamp->getTimestamp();  //获取服务器时间
+    // $bmobTimestamp = new BmobTimestamp();
+    // $res = $bmobTimestamp->getTimestamp();  //获取服务器时间
+
+    //// bql相关
+     $bmobBql = new BmobBql();
+     $res = $bmobBql->query(array('bql=select * from GameScore where name=? limit ?,? order by name','values=["dennis", 0, 100]'));  
 
     /*
      *  bmobUser 的例子
