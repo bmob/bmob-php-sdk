@@ -23,6 +23,8 @@ class BmobPush extends BmobRestClient
     public function addInstallations($data)
     {
         if (!empty($data)) {
+            //重设对象的属性
+            $this->setData($data);            
             $sendRequest = $this->sendRequest(array(
                 'method' => 'POST',
                 'data' => $data,

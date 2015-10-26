@@ -22,24 +22,7 @@ class BmobObject extends BmobRestClient
         parent::__construct();
     }
 
-    /**
-     * 重设对象的属性
-     * @param array $data
-     */
-    public function setData($data = array())
-    {
 
-        //每次使用前先清空对象属性数组
-        $this->data = array();
-        if ($data) {
-            foreach ($data as $name => $value) {
-                if ($name != '_className') {
-                    $this->data[$name] = $value;
-                }
-            }
-        }
-
-    }
 
     /**
      * 添加对象

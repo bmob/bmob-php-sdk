@@ -23,7 +23,8 @@ class BmobBatch extends BmobRestClient
     public function batch($data)
     {
         if (!empty($data)) {
-
+            //重设对象的属性
+            $this->setData($data);
             $this->data["requests"] = $data;
             $sendRequest = $this->sendRequest(array(
                 'method' => 'POST',

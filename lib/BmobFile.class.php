@@ -23,7 +23,8 @@ class BmobFile extends BmobRestClient
     public function uploadFile($fileName, $filePath)
     {
         if (!empty($fileName) && !empty($filePath)) {
-
+        //重设对象的属性
+            $this->setData($data);
             $this->data = file_get_contents($filePath);
             $sendRequest = $this->sendRequest(array(
                 'method' => 'POST',

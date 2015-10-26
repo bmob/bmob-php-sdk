@@ -39,6 +39,25 @@ class BmobRestClient
     }
 
     /**
+     * 重设对象的属性
+     * @param array $data
+     */
+    public function setData($data = array())
+    {
+
+        //每次使用前先清空对象属性数组
+        $this->data = array();
+        if ($data) {
+            foreach ($data as $name => $value) {
+                if ($name != '_className') {
+                    $this->data[$name] = $value;
+                }
+            }
+        }
+
+    }
+
+    /**
      * 所有的请求都通过这个方法发送
      * @param  $args
      */

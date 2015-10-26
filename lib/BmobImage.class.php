@@ -25,7 +25,8 @@ class BmobImage extends BmobRestClient
     public function imageThumbnail($data)
     {
         if (!empty($data)) {
-
+            //重设对象的属性
+            $this->setData($data);
             $this->data = $data;
             $sendRequest = $this->sendRequest(array(
                 'method' => 'POST',
