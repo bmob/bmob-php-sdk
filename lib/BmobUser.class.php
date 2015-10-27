@@ -84,7 +84,7 @@ class BmobUser extends BmobRestClient
      * 获取用户的信息
      * @param string $userId 用户id, 必填
      */
-    public function get($userId = 0)
+    public function get($userId = 0, $condition = array())
     {
         if ($userId) {
 
@@ -99,6 +99,7 @@ class BmobUser extends BmobRestClient
             $request = $this->sendRequest(array(
                 'method' => 'GET',
                 'sendRequestUrl' => 'users',
+                'condition' => $condition,
             ));
             return $request;
         }

@@ -37,7 +37,7 @@ try {
     //添加关联关系
 
     //在字段添加一行记录并在game添加一个关联关系，指向Game对象,　其id为Vn7r999S
-    $res=$bmobObj->addRelPointer(array(array("game","Game","Vn7r999S"), array("game1","Game","Vn7r999S")));
+    // $res=$bmobObj->addRelPointer(array(array("game","Game","Vn7r999S"), array("game1","Game","Vn7r999S")));
     //在字段添加一行记录并在opponents添加多个关联关系，指向Player对象
     // $res=$bmobObj->addRelRelation("opponents",array(array("Player","30BRpppy"),array("Player","g5s7EEEV")));
     //修改对象的关联数据，指向Game对象,　其id为Vn7r999S
@@ -169,6 +169,7 @@ try {
     // $res = $bmobUser->loginByMobile("131xxxxxxxx","745399"); //用手机号登录, 其中mobilePhoneNumber和smsCode为必填字段
     // $res = $bmobUser->get("415b8fe99a"); // 获取id为415b8fe99a用户的信息
     // $res = $bmobUser->get(); // 获取所有用户的信息
+    $res=$bmobUser->get("",array('where={"age":11}')); 
     // $res = $bmobUser->update("415b8fe99a", "050391db407114d9801c8f2788c6b25a", array("phone"=>"02011111")); // 更新用户的信息
     // $res = $bmobUser->requestPasswordReset("bmobtest111@126.com"); // 请求重设密码,前提是用户将email与他们的账户关联起来
     // $res = $bmobUser->delete("415b8fe99a", "050391db407114d9801c8f2788c6b25a"); // 删除id为415b8fe99a的用户, 第一参数是用户id, 第二个参数为sessiontoken,在用户登录或注册后获取, 必填
