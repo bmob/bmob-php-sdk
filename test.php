@@ -37,7 +37,7 @@ try {
     //添加关联关系
 
     //在字段添加一行记录并在game添加一个关联关系，指向Game对象,　其id为Vn7r999S
-    // $res=$bmobObj->addRelPointer("game","Game","Vn7r999S");
+    $res=$bmobObj->addRelPointer(array(array("game","Game","Vn7r999S"), array("game1","Game","Vn7r999S")));
     //在字段添加一行记录并在opponents添加多个关联关系，指向Player对象
     // $res=$bmobObj->addRelRelation("opponents",array(array("Player","30BRpppy"),array("Player","g5s7EEEV")));
     //修改对象的关联数据，指向Game对象,　其id为Vn7r999S
@@ -156,8 +156,8 @@ try {
     // $res = $bmobTimestamp->getTimestamp();  //获取服务器时间
 
     //// bql相关
-     $bmobBql = new BmobBql();
-     $res = $bmobBql->query(array('bql=select * from GameScore where name=? limit ?,? order by name','values=["dennis", 0, 100]'));  
+     // $bmobBql = new BmobBql();
+     // $res = $bmobBql->query(array('bql=select * from GameScore where name=? limit ?,? order by name','values=["dennis", 0, 100]'));  
 
     /*
      *  bmobUser 的例子

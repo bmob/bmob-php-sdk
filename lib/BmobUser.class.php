@@ -22,7 +22,7 @@ class BmobUser extends BmobRestClient
      */
     public function register($data = array())
     {
-
+        $this->cleanData();
         if (!empty($data)) {
             $request = $this->sendRequest(array(
                 'method' => 'POST',

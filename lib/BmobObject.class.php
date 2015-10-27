@@ -133,7 +133,7 @@ class BmobObject extends BmobRestClient
     public function increment($id, $field, $amount)
     {
         //重设对象的属性
-        $this->setData($data);
+        $this->cleanData();
         if ($this->_className != '' || !empty($id)) {
 
             $this->data[$field] = $this->dataType('increment', $amount);
@@ -160,7 +160,7 @@ class BmobObject extends BmobRestClient
     public function deleteField($id, $field)
     {
         //重设对象的属性
-        $this->setData($data);
+        $this->cleanData();
         if ($this->_className != '' && !empty($id) && !empty($field)) {
 
             $this->data[$field] = $this->dataType('deleteField', $field);
@@ -187,7 +187,7 @@ class BmobObject extends BmobRestClient
     public function addArray($field, $data)
     {
         //重设对象的属性
-        $this->setData($data);
+        $this->cleanData();
         if ($this->_className != '' && !empty($field) && !empty($data)) {
 
             $this->data[$field] = $this->dataType('addArray', $data);
@@ -215,7 +215,7 @@ class BmobObject extends BmobRestClient
     public function updateArray($id, $field, $data)
     {
         //重设对象的属性
-        $this->setData($data);
+        $this->cleanData();
         if ($this->_className != '' && !empty($id) && !empty($field) && !empty($data)) {
 
             $this->data[$field] = $this->dataType('addArray', $data);
@@ -243,7 +243,7 @@ class BmobObject extends BmobRestClient
     public function deleteArray($id, $field, $data)
     {
         //重设对象的属性
-        $this->setData($data);
+        $this->cleanData();
         if ($this->_className != '' && !empty($id) && !empty($field) && !empty($data)) {
 
             $this->data[$field] = $this->dataType('delArray', $data);
@@ -267,13 +267,12 @@ class BmobObject extends BmobRestClient
      * @param string $otherObject 需要修改的字段
      * @param string $otherObjectId 删除的数组
      */
-    public function addRelPointer($field, $otherObject, $otherObjectId)
+    public function addRelPointer($data)
     {
         //重设对象的属性
-        $this->setData($data);
-        if ($this->_className != '' && !empty($field) && !empty($otherObject) && !empty($otherObjectId)) {
-
-            $this->data[$field] = $this->dataType('addRelPointer', array($otherObject, $otherObjectId));
+        $this->cleanData();
+        if ($this->_className != '' && !empty($data) ) {
+            $this->data = $this->dataType('addRelPointer', $data);
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'POST',
@@ -296,7 +295,7 @@ class BmobObject extends BmobRestClient
     public function addRelRelation($field, $data)
     {
         //重设对象的属性
-        $this->setData($data);
+        $this->cleanData();
         if ($this->_className != '' && !empty($field) && !empty($data)) {
 
             $this->data[$field] = $this->dataType('addRelRelation', $data);
@@ -324,7 +323,7 @@ class BmobObject extends BmobRestClient
     public function updateRelPointer($id, $field, $otherObject, $otherObjectId)
     {
         //重设对象的属性
-        $this->setData($data);
+        $this->cleanData();
         if ($this->_className != '' && !empty($field) && !empty($otherObject) && !empty($otherObjectId)) {
 
             $this->data[$field] = $this->dataType('addRelPointer', array($otherObject, $otherObjectId));
@@ -351,7 +350,7 @@ class BmobObject extends BmobRestClient
     public function updateRelRelation($id, $field, $data)
     {
         //重设对象的属性
-        $this->setData($data);
+        $this->cleanData();
         if ($this->_className != '' && !empty($id) && !empty($field) && !empty($data)) {
 
             $this->data[$field] = $this->dataType('addRelRelation', $data);
@@ -378,7 +377,7 @@ class BmobObject extends BmobRestClient
     public function deleteRelation($id, $field, $data)
     {
         //重设对象的属性
-        $this->setData($data);
+        $this->cleanData();
         if ($this->_className != '' && !empty($id) && !empty($field) && !empty($data)) {
 
             $this->data[$field] = $this->dataType('removeRelation', $data);

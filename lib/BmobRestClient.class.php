@@ -58,6 +58,19 @@ class BmobRestClient
     }
 
     /**
+     * 重设对象的属性
+     * @param array $data
+     */
+    public function cleanData()
+    {
+
+        //每次使用前先清空对象属性数组
+        $this->data = array();
+
+    }
+
+
+    /**
      * 所有的请求都通过这个方法发送
      * @param  $args
      */
@@ -142,7 +155,7 @@ class BmobRestClient
             if (strpos($args['sendRequestUrl'], "1/files") === false) { //非上传文件的操作把body内容变为json
                 $postData = json_encode($args['data']);
             }
-            // echo "postdata:".$postData;
+             // echo "postdata:".$postData;
             curl_setopt($c, CURLOPT_POSTFIELDS, $postData);
         }
 
@@ -231,11 +244,18 @@ class BmobRestClient
                     );
                     break;
                 case 'addRelPointer':
-                    $return = array(
-                        "__type" => "Pointer",
-                        "className" => $params[0],
-                        "objectId" => $params[1],
-                    );
+                    $data = array();
+                     
+                    foreach ($params as $param) {
+
+                        $key = $param[0];
+                        $data[$key] = array(
+                            "__type" => "Pointer",
+                            "className" => $param[1],
+                            "objectId" => $param[2],
+                        );
+                    }
+                    return $data;
                     break;
                 case 'addRelRelation':
                     $data = array();
