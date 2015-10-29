@@ -72,8 +72,8 @@ try {
     //上传文件
     $bmobFile = new BmobFile();
     //第一个参数是文件的名称,第二个参数是文件的url(可以是本地路径,最终是通过file_get_contents获取文件内容)
-    // $res=$bmobFile->uploadFile("heelo.txt","http://file.bmob.cn/M02/17/99/oYYBAFYfXS6AKB96AAAABNsGNwg872.txt");
-        $res=$bmobFile->delete("M02/53/FC/oYYBAFYxxMKAMFaeAAAAmZEioJk171.txt");
+    $res=$bmobFile->uploadFile("988.png","http://file.bmob.cn/M02/4A/CB/oYYBAFYu36mAAIN_AAEbMJNyjaw988.png");
+        // $res=$bmobFile->delete("M02/54/09/oYYBAFYxx4uAbgTcAAAbpS8UHE45961.js");
 
     // // 生成缩微图
     // $bmobImage = new BmobImage();
