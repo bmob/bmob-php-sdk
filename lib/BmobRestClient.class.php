@@ -155,7 +155,7 @@ class BmobRestClient
             if (strpos($args['sendRequestUrl'], "files") === false) { //非上传文件的操作把body内容变为json
                 $postData = json_encode($args['data']);
             }
-             echo "postdata:".$postData;
+             // echo "postdata:".$postData;
             curl_setopt($c, CURLOPT_POSTFIELDS, $postData);
         }
 
