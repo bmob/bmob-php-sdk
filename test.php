@@ -70,10 +70,10 @@ try {
     // $res=$bmobBatch->batch($data);
 
     //上传文件
-    // $bmobFile = new BmobFile();
+    $bmobFile = new BmobFile();
     //第一个参数是文件的名称,第二个参数是文件的url(可以是本地路径,最终是通过file_get_contents获取文件内容)
     // $res=$bmobFile->uploadFile("heelo.txt","http://file.bmob.cn/M02/17/99/oYYBAFYfXS6AKB96AAAABNsGNwg872.txt");
-
+        $res=$bmobFile->delete("M02/53/FC/oYYBAFYxxMKAMFaeAAAAmZEioJk171.txt");
 
     // // 生成缩微图
     // $bmobImage = new BmobImage();
@@ -169,7 +169,7 @@ try {
     // $res = $bmobUser->loginByMobile("131xxxxxxxx","745399"); //用手机号登录, 其中mobilePhoneNumber和smsCode为必填字段
     // $res = $bmobUser->get("415b8fe99a"); // 获取id为415b8fe99a用户的信息
     // $res = $bmobUser->get(); // 获取所有用户的信息
-    $res=$bmobUser->get("",array('where={"age":11}')); 
+    // $res=$bmobUser->get("",array('where={"age":11}')); 
     // $res = $bmobUser->update("415b8fe99a", "050391db407114d9801c8f2788c6b25a", array("phone"=>"02011111")); // 更新用户的信息
     // $res = $bmobUser->requestPasswordReset("bmobtest111@126.com"); // 请求重设密码,前提是用户将email与他们的账户关联起来
     // $res = $bmobUser->delete("415b8fe99a", "050391db407114d9801c8f2788c6b25a"); // 删除id为415b8fe99a的用户, 第一参数是用户id, 第二个参数为sessiontoken,在用户登录或注册后获取, 必填

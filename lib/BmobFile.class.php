@@ -33,10 +33,28 @@ class BmobFile extends BmobRestClient
             ));
             return $sendRequest;
         } else {
-            $this->throwError('请指导文件名和文件路径');
+            $this->throwError('请输入文件名和文件路径');
         }
     }
 
+    /**
+     * 上传文件
+     * @param array $data 批量操作的数据
+     */
+    public function delete($url)
+    {
+        if (!empty($url) ) {
+            //重设对象的属性
+            $this->cleanData();
+            $sendRequest = $this->sendRequest(array(
+                'method' => 'DELETE',
+                'sendRequestUrl' => 'files/' . $url,
+            ));
+            return $sendRequest;
+        } else {
+            $this->throwError('请输入url');
+        }
+    }
 
 }
 
