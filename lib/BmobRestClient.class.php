@@ -152,7 +152,7 @@ class BmobRestClient
         //生成post data
         if ($args['method'] == 'PUT' || $args['method'] == 'POST') {
             $postData = $args['data'];
-            if (strpos($args['sendRequestUrl'], "files") === false) { //非上传文件的操作把body内容变为json
+            if (strpos($args['sendRequestUrl'], "files") === false || strpos($args['sendRequestUrl'], "files")>0) { //非上传文件的操作把body内容变为json
                 $postData = json_encode($args['data']);
             }
              // echo "postdata:".$postData;
