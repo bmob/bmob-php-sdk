@@ -5,7 +5,6 @@ include_once 'BmobRestClient.class.php';
 /**
  * BmobObject object对象类
  * @author karvinchen
- * @authort 2014.09.18
  * @license http://www.gnu.org/copyleft/lesser.html Distributed under the Lesser General Public License (LGPL)
  */
 class BmobCloudCode extends BmobRestClient

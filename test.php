@@ -6,7 +6,7 @@ include_once 'lib/BmobFile.class.php';
 include_once 'lib/BmobImage.class.php';
 include_once 'lib/BmobRole.class.php';
 include_once 'lib/BmobPush.class.php';
-include_once 'lib/BmobOrder.class.php';
+include_once 'lib/BmobPay.class.php';
 include_once 'lib/BmobSms.class.php';
 include_once 'lib/BmobApp.class.php';
 include_once 'lib/BmobSchemas.class.php';
@@ -72,8 +72,9 @@ try {
     //上传文件
     $bmobFile = new BmobFile();
     //第一个参数是文件的名称,第二个参数是文件的url(可以是本地路径,最终是通过file_get_contents获取文件内容)
-    $res=$bmobFile->uploadFile("988.png","http://file.bmob.cn/M02/4A/CB/oYYBAFYu36mAAIN_AAEbMJNyjaw988.png");
-        // $res=$bmobFile->delete("M02/54/09/oYYBAFYxx4uAbgTcAAAbpS8UHE45961.js");
+    // $res=$bmobFile->uploadFile("988.png","http://file.bmob.cn/M02/4A/CB/oYYBAFYu36mAAIN_AAEbMJNyjaw988.png");
+    //$res=$bmobFile->delete("M02/57/6F/oYYBAFYy32mADr34AAAAAjP0FTs528.txt");
+
 
     // // 生成缩微图
     // $bmobImage = new BmobImage();
@@ -108,9 +109,10 @@ try {
     // $res = $bmobPush->updateInstallations("fdcc6a94c6",array("injuryReports"=>true)); //更新设备表
     // $res = $bmobPush->push(array("data"=>array("alert"=>"hello"))); //推送消息
 
-    ////订单的例子
-    // $bmobOrder = new BmobOrder();
+    ////支付的例子
+    $bmobPay = new BmobPay();
     // $res = $bmobOrder->getOrder("fd343232cc6a94c6");  //查询订单
+    $res =$bmobPay->webPay(0.01, "充值", "给应用充值0.01元");
 
     ////短信相关
     // $bmobSms = new BmobSms();

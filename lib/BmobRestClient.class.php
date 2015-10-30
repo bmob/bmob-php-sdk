@@ -4,8 +4,7 @@ include_once 'BmobException.class.php';
 
 /**
  * BmobRestClient 主类，所有的api请求都需要使用这个类
- * @author newjueqi
- * @authort 2014.03.28
+ * @author karvinchen
  * @license http://www.gnu.org/copyleft/lesser.html Distributed under the Lesser General Public License (LGPL)
  */
 class BmobRestClient

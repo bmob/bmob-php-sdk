@@ -2,8 +2,7 @@
 
 /**
  * BmobException 异常类
- * @author newjueqi
- * @authort 2014.03.28
+ * @author jeff
  * @license http://www.gnu.org/copyleft/lesser.html Distributed under the Lesser General Public License (LGPL)
  */
 class BmobException extends Exception

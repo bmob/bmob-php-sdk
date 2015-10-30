@@ -4,7 +4,7 @@ include_once 'BmobRestClient.class.php';
 
 /**
  * BmobUser batch对象类
- * @authort 2014.03.28
+ * @author karvinchen
  * @license http://www.gnu.org/copyleft/lesser.html Distributed under the Lesser General Public License (LGPL)
  */
 class BmobApp extends BmobRestClient
