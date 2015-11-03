@@ -184,7 +184,7 @@ class BmobUser extends BmobRestClient
     {
         if (!empty($newPassword) || !empty($smsCode)) {
             $request = $this->sendRequest(array(
-                'method' => 'POST',
+                'method' => 'PUT',
                 'sendRequestUrl' => 'resetPasswordBySmsCode/' . $smsCode,
                 'data' => array("password" => $newPassword)
             ));
