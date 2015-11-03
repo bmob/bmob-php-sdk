@@ -23,14 +23,19 @@ class BmobSchemas extends BmobRestClient
      * @param  $schemaName schemaName的名称
      * @param  $data
      */
-    public function getSchemas($masterKey, $schemaName)
+    public function getSchemas($masterKey, $schemaName="")
     {
-        if (!empty($masterKey) && !empty($schemaName)) {
-
+        if (!empty($masterKey)) {
+            $url="";
+            if( $schemaName ) {
+                $url="schemas/" . $schemaName;
+            } else {
+                $url= "schemas" ;
+            }
             $sendRequest = $this->sendRequest(array(
                 'X-Bmob-Master-Key' => $masterKey,
                 'method' => 'GET',
-                'sendRequestUrl' => "schemas/" . $schemaName,
+                'sendRequestUrl' => $url,
             ));
             return $sendRequest;
         } else {

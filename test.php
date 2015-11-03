@@ -117,7 +117,7 @@ try {
     ////短信相关
     $bmobSms = new BmobSms();
     // $res = $bmobSms->sendSms("131xxxxxxxx", "您的验证码是：222222, 有效期是10分钟。"); //发送短信
-    $res = $bmobSms->sendSmsVerifyCode("131xxxxxxxx", "注册模板");  //发送短信验证码
+    // $res = $bmobSms->sendSmsVerifyCode("131xxxxxxxx", "注册模板");  //发送短信验证码
     // $res = $bmobSms->verifySmsCode("131xxxxxxxx","028584");  //发送短信验证码
     // $res = $bmobSms->querySms("6466181");  //查询短信状态
 
@@ -126,11 +126,11 @@ try {
     // $res = $bmobApp->getApp("h611115@126.com", "111111"); //获取全部app的信息
     // $res = $bmobApp->getApp("h611115@126.com", "111111", "85b5xxxxxxxx9e59a795da547c68e6"); //获取app id 为"85b56934cce1129e59a795da547c68e6"的信息
     // $res = $bmobApp->createApp("h611115@126.com", "111111", array("appName"=>"myapp111")); //创建一个名为"myapp111"的app
-    // $res = $bmobApp->updateApp("h611115@126.com", "111111", "330xxxxxxxxx578d1f923126547bea5", array("appName"=>"myapp11122")); //创建一个名为"myapp111"的app
+    // $res = $bmobApp->updateApp("h611115@126.com", "111111", "330xxxxxxxxx578d1f923126547bea5", array("appName"=>"myapp11122")); //修改一个名为"myapp111"的app
 
     //// schemas相关
-    // $bmobSchemas = new BmobSchemas();
-    // $res = $bmobSchemas->getSchemas("e09fb5cbb5bxxxxxxxx9504604c0dcff", "Game"); //获取表Game的信息
+    $bmobSchemas = new BmobSchemas();
+    $res = $bmobSchemas->getSchemas("e09fb5cbb5b825c78989504604c0dcff"); //获取表Game的信息
     // $data=array(
     // 		"className" => "City",
     // 		"fields" => array(
