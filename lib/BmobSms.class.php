@@ -45,10 +45,14 @@ class BmobSms extends BmobRestClient
      * 发送短信验证码
      * @param  $mobile    发送的手机号
      */
-    public function sendSmsVerifyCode($mobile)
+    public function sendSmsVerifyCode($mobile, $template="")
     {
         if (!empty($mobile)) {
-            $data = array("mobilePhoneNumber" => $mobile);
+            if( $template ){
+                $data = array("mobilePhoneNumber" => $mobile, "template"=>$template);
+            } else {
+                $data = array("mobilePhoneNumber" => $mobile);
+            }
             $sendRequest = $this->sendRequest(array(
                 'method' => 'POST',
                 'data' => $data,

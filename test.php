@@ -88,9 +88,9 @@ try {
 
 
     //角色的例子
-    // $bmobRole = new BmobRole();
+    $bmobRole = new BmobRole();
     // $res = $bmobRole->createRole(array("name"=>"Mo1derators", "ACL"=>array("*"=>array("read"=>true,"write"=>true)))); //创建角色
-    // $res = $bmobRole->getRole("fff849f7d4"); //获取角色
+    $res = $bmobRole->getRole("dcf9ad7d2e"); //获取角色
 
     // $data=array(
     // 		array(
@@ -110,14 +110,14 @@ try {
     // $res = $bmobPush->push(array("data"=>array("alert"=>"hello"))); //推送消息
 
     ////支付的例子
-    $bmobPay = new BmobPay();
-    // $res = $bmobOrder->getOrder("fd343232cc6a94c6");  //查询订单
-    $res =$bmobPay->webPay(0.01, "充值", "给应用充值0.01元");
+    // $bmobPay = new BmobPay();
+    // $res = $bmobPay->getOrder("fd343232cc6a94c6");  //查询订单
+    // $res =$bmobPay->webPay(0.01, "充值", "给应用充值0.01元");
 
     ////短信相关
-    // $bmobSms = new BmobSms();
+    $bmobSms = new BmobSms();
     // $res = $bmobSms->sendSms("131xxxxxxxx", "您的验证码是：222222, 有效期是10分钟。"); //发送短信
-    // $res = $bmobSms->sendSmsVerifyCode("131xxxxxxxx");  //发送短信验证码
+    $res = $bmobSms->sendSmsVerifyCode("131xxxxxxxx", "注册模板");  //发送短信验证码
     // $res = $bmobSms->verifySmsCode("131xxxxxxxx","028584");  //发送短信验证码
     // $res = $bmobSms->querySms("6466181");  //查询短信状态
 
