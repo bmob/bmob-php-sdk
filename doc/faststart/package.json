@@ -1,0 +1,46 @@
+{
+  "name": "bmob开发文档",
+  "version": "0.2.6",
+  "description": "简单介绍Bmob，以及如何注册、下载、嵌入使用SDK的方法等等",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "bin": {
+    "doxmate": "bin/doxmate",
+    "doxmate-build": "bin/doxmate-build",
+    "doxmate-theme": "bin/doxmate-theme"
+  },
+  "keywords": [
+    "documentation",
+    "dox"
+  ],
+  "dependencies": {
+    "dox": "*",
+    "commander": "*",
+    "marked": "*",
+    "ejs": "*",
+    "ncp": "*"
+  },
+  "devDependencies": {
+    "should": "*",
+    "mocha": "*"
+  },
+  "author": "Jackson Tian",
+  "contributors": [
+    "JacksonTian <shyvo1987@gmail.com> (https://github.com/JacksonTian)",
+    "youxiachai <youxiachai@gmail.com> (https://github.com/youxiachai)"
+  ],
+  "license": "MIT",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JacksonTian/doxmate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JacksonTian/doxmate/issues"
+  }
+}

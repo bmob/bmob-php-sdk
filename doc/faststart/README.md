@@ -1,6 +1,5 @@
 Bmob PHP SDK开发文档
-
-===============
+================
 
 本文档是Bmob官方提供的PHP SDK，方便PHP开发人员快速使用Bmob进行后端开发。
 
@@ -12,12 +11,6 @@ Bmob PHP SDK开发文档
 
 请到以下的Github地址clone我们的SDK最新代码：[https://github.com/bmob/bmob-php-sdk](https://github.com/bmob/bmob-php-sdk)
 
-### 目录结构
-
-doc：文档
-lib：php的类库
-pay：支付的demo
-test.php: 一些demo
 
 ### 安装和配置
 =========================
