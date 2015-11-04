@@ -14,10 +14,12 @@ Bmob PHP SDK开发文档
 
 ### 目录结构
 
+```
 doc：文档
 lib：php的类库
 pay：支付的demo
 test.php: 一些demo
+```
 
 ### 安装和配置
 =========================
