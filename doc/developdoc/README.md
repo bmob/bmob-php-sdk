@@ -5,7 +5,7 @@ Bmob平台为您的移动应用提供了一个完整的后端解决方案，我�
 
 ## 快速入门
 
-建议您在阅读本开发文档之前，先阅读我们提供的 [php快速入门文档](http://docs.bmob.cn/php/faststart/index.html?menukey=fast_start&key=start_php)，便于您后续的开发。
+建议您在阅读本开发文档之前，先阅读我们提供的 [php快速入门文档](http://docs.bmob.cn/phpsdk/index.html?menukey=otherdoc&key=phpsdk)，便于您后续的开发。
 
 
 ## 应用程序
@@ -21,6 +21,7 @@ Bmob平台为您的移动应用提供了一个完整的后端解决方案，我�
 
 ## php sdk相关类的说明
 
+```
 lib/BmobObject.class.php:对象操作类
 lib/BmobUser.class.php：用户操作类
 lib/BmobBatch.class.php：批量操作类
@@ -35,6 +36,7 @@ lib/BmobSchemas.class.php：数据表操作类
 lib/BmobTimestamp.class.php：获取服务器时间类
 lib/BmobCloudCode.class.php：云端代码类
 lib/BmobBql.class.php：bql操作类
+```
 
 ## 对象
 
@@ -463,7 +465,6 @@ $res=$bmobUser->update("16d846f51c", array("projectExperiences.0.name"=>"项目�
 $res=$bmobObj->update("16d846f51c", array("userAttibute.gender"=>"女")); 
 ```
 
-```
 
 ## 数据关联
 
@@ -613,7 +614,7 @@ Bmob提供了`Pointer（一对一、一对多）`和`Relation（多对多）`两
 
 ```php
 	$comment = new BmobObject("Comment");
-	$res=$comment->addRelPointer(array(array("author","_User","0290813a89"),array("post","Post","81108a33c8")));
+	$res = $comment->addRelPointer(array(array("author","_User","0290813a89"),array("post","Post","81108a33c8")));
 ```
 
 #### 查询一对多关联
@@ -621,7 +622,7 @@ Bmob提供了`Pointer（一对一、一对多）`和`Relation（多对多）`两
 我想`查询出某个帖子（objectId为81108a33c8）的所有评论,同时将该评论的作者的信息也查询出来`，那么可以使用下面的方法：
 
 ```php
-	$res=$comment->get("",array('where={"post":{"__type":"Pointer","className":"Post","objectId":"81108a33c8"}}','include=author'));
+	$res = $comment->get("",array('where={"post":{"__type":"Pointer","className":"Post","objectId":"81108a33c8"}}','include=author'));
 ```
 
 
@@ -636,7 +637,7 @@ Bmob提供了`Pointer（一对一、一对多）`和`Relation（多对多）`两
 
 
 ```php
-	$res=$post->updateRelRelation("83ce274594", "likes", array(array("_User","focb9e3d60")));
+$res = $post->updateRelRelation("83ce274594", "likes", array(array("_User","focb9e3d60")));
 ```
 
 添加成功后，在后台的`Post`表中就能查看到`likes`字段已经生成并对应到了`_User`
@@ -655,7 +656,7 @@ Bmob提供了`Pointer（一对一、一对多）`和`Relation（多对多）`两
 
 示例代码：
 ```php
-	$res = $bmobUser->get(0,array('where={"$relatedTo":{"object":{"__type":"Pointer","className":"Post","objectId":"83ce274594"},"key":"likes"}}')); 
+$res = $bmobUser->get(0,array('where={"$relatedTo":{"object":{"__type":"Pointer","className":"Post","objectId":"83ce274594"},"key":"likes"}}')); 
 ```
 
 #### 修改多对多关联
