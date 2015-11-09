@@ -90,7 +90,7 @@ try {
     //角色的例子
     $bmobRole = new BmobRole();
     // $res = $bmobRole->createRole(array("name"=>"Mo1derators", "ACL"=>array("*"=>array("read"=>true,"write"=>true)))); //创建角色
-    $res = $bmobRole->getRole("dcf9ad7d2e"); //获取角色
+    // $res = $bmobRole->getRole("dcf9ad7d2e"); //获取角色
 
     // $data=array(
     // 		array(
@@ -130,7 +130,7 @@ try {
 
     //// schemas相关
     $bmobSchemas = new BmobSchemas();
-    $res = $bmobSchemas->getSchemas("e09fb5cbb5b825c78989504604c0dcff"); //获取表Game的信息
+    // $res = $bmobSchemas->getSchemas("e09fb5cbb5b825c78989504604c0dcff"); //获取表Game的信息
     // $data=array(
     // 		"className" => "City",
     // 		"fields" => array(
@@ -158,9 +158,10 @@ try {
     // $res = $bmobTimestamp->getTimestamp();  //获取服务器时间
 
     //// bql相关
-     // $bmobBql = new BmobBql();
+     $bmobBql = new BmobBql();
      // $res = $bmobBql->query(array('bql=select * from GameScore where name=? limit ?,? order by name','values=["dennis", 0, 100]'));  
-
+     // $res = $bmobBql->query(array('bql'=>'select * from GameScore where score=11'));  
+      $res = $bmobBql->query(array('bql'=>'select * from GameScore where score=?', 'values'=>'[11]'));  
     /*
      *  bmobUser 的例子
      */

@@ -358,7 +358,7 @@ $res=$bmobObj->get("",array('$res=$bmobObj->get("",array("keys=score,playerName"
 
 ```php
      $bmobBql = new BmobBql();
-     $res = $bmobBql->query(array('bql=select * from GameScore where score=98 order by name'));  
+      $res = $bmobBql->query(array('bql'=>'select * from GameScore where score=11'));  
 ```
 
 更多请参考 [BQL 详细指南](http://docs.bmob.cn/bql/index.html?menukey=otherdoc&key=bql "BQL 详细指南") 。
@@ -367,7 +367,7 @@ BQL 还支持占位符查询，where 和 limit 子句的条件参数可以使用
 
 ```php
     $bmobBql = new BmobBql();
-     $res = $bmobBql->query(array('bql=select * from GameScore where name=? limit ?,? order by name','values=["dennis", 0, 100]'));  
+    $res = $bmobBql->query(array('bql'=>'select * from GameScore where score=?', 'values'=>'[11]'));  
 
 ```
 

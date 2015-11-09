@@ -173,12 +173,19 @@ class BmobRestClient
             $url = $url . '?' . $urlParams;
         }
         if (array_key_exists('urlParams', $args)) {
-            $urlParams = http_build_query($args['urlParams'], '', '&');
-            $url = $url . '?' . $urlParams;
+
+            if( $args['sendRequestUrl'] == "cloudQuery" ) {
+                $url = $url . '?bql=' .urlencode($args['urlParams']['bql']);
+                if( isset($args['urlParams']['values']) ) {
+                    $url = $url . '&values=' .urlencode($args['urlParams']['values']);
+                }
+            }else {
+                $urlParams = http_build_query($args['urlParams'], '', '&');
+                $url = $url . '?' . $urlParams;
+            }
         }
 
         curl_setopt($c, CURLOPT_URL, $url);
-
         $response = curl_exec($c);
         // echo "response_code:".$response;
         if (!$response) {

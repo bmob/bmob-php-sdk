@@ -28,7 +28,7 @@ class BmobBql extends BmobRestClient
             $sendRequest = $this->sendRequest(array(
                 'method' => 'GET',
                 'sendRequestUrl' => 'cloudQuery',
-                'condition' => $data,
+                'urlParams' => $data,
             ));
             return $sendRequest;
         } else {
