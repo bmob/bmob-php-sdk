@@ -97,6 +97,14 @@ class BmobRestClient
                     'X-bmob-REST-API-Key: ' . $this->_bmobRestkey,
                     'X-Bmob-Session-Token: ' . $args['sessionToken'],
                 ));
+            } elseif (isset($args['masterKey'])) {
+                //需要传入X-Bmob-Master-Key
+                curl_setopt($c, CURLOPT_HTTPHEADER, array(
+                    'Content-Type: application/json',
+                    'X-bmob-Application-Id: ' . $this->_bmobAppid,
+                    'X-bmob-REST-API-Key: ' . $this->_bmobRestkey,
+                    'X-Bmob-Master-Key: ' . $args['masterKey'],
+                ));                    
             } else {
                 curl_setopt($c, CURLOPT_HTTPHEADER, array(
                     'Content-Type: application/json',

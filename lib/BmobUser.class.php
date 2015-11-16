@@ -135,6 +135,34 @@ class BmobUser extends BmobRestClient
     }
 
     /**
+     * 通过MasterKey更新用户的信息
+     * @param string $userId 用户id, 必填
+     * @param string $masterKey 后台应用密钥中的Master Key
+     * @param array $data 需要更新的用户属性
+     */
+    public function updateByMasterKey($userId, $masterKey, $data = array())
+    {
+        if (!empty($userId) || !empty($masterKey)) {
+
+            if ($data) {
+                $request = $this->sendRequest(array(
+                    'method' => 'PUT',
+                    'sendRequestUrl' => 'users/' . $userId,
+                    'masterKey' => $masterKey,
+                    'data' => $data
+                ));
+            } else {
+                $this->throwError('请输入需要更新的属性');
+            }
+
+            return $request;
+        } else {
+            $this->throwError('用户id和masterKey不能为空');
+        }
+
+    }    
+
+    /**
      * 请求重设密码,前提是用户将email与他们的账户关联起来
      * @param string $email
      */
@@ -172,7 +200,26 @@ class BmobUser extends BmobRestClient
         } else {
             $this->throwError('用户id和sessionToken不能为空');
         }
+    }
 
+    /**
+     * 删除用户
+     * @param string $userId
+     * @param string $masterKey 
+     */
+    public function deleteByMasterKey($userId, $masterKey)
+    {
+        if (!empty($userId) || !empty($masterKey)) {
+            $request = $this->sendRequest(array(
+                'method' => 'DELETE',
+                'sendRequestUrl' => 'users/' . $userId,
+                'masterKey' => $masterKey
+            ));
+
+            return $request;
+        } else {
+            $this->throwError('用户id和masterKey不能为空');
+        }
     }
 
     /**

@@ -161,7 +161,7 @@ try {
      $bmobBql = new BmobBql();
      // $res = $bmobBql->query(array('bql=select * from GameScore where name=? limit ?,? order by name','values=["dennis", 0, 100]'));  
      // $res = $bmobBql->query(array('bql'=>'select * from GameScore where score=11'));  
-      $res = $bmobBql->query(array('bql'=>'select * from GameScore where score=?', 'values'=>'[11]'));  
+      // $res = $bmobBql->query(array('bql'=>'select * from GameScore where score=?', 'values'=>'[11]'));  
     /*
      *  bmobUser 的例子
      */
@@ -174,8 +174,11 @@ try {
     // $res = $bmobUser->get(); // 获取所有用户的信息
     // $res=$bmobUser->get("",array('where={"age":11}')); 
     // $res = $bmobUser->update("415b8fe99a", "050391db407114d9801c8f2788c6b25a", array("phone"=>"02011111")); // 更新用户的信息
+    // $res = $bmobUser->updateByMasterKey("0290813a89", "e09fb5cbb5b825c78989504604c0dcff", array("phone"=>"02011122")); // 通过masterKey更新用户的信息
+
     // $res = $bmobUser->requestPasswordReset("bmobtest111@126.com"); // 请求重设密码,前提是用户将email与他们的账户关联起来
     // $res = $bmobUser->delete("415b8fe99a", "050391db407114d9801c8f2788c6b25a"); // 删除id为415b8fe99a的用户, 第一参数是用户id, 第二个参数为sessiontoken,在用户登录或注册后获取, 必填
+    $res = $bmobUser->deleteByMasterKey("0290813a89", "e09fb5cbb5b825c78989504604c0dcff"); // 通过masterKey删除用户
     // $res = $bmobUser->resetPasswordBySmsCode("111111", "134554"); // 使用短信验证码进行密码重置
     // $res = $bmobUser->updateUserPassword("WXHsFFFd", "d365d5834061d9f6805047131893ae13" , "111111", "111111"); //用户输入一次旧密码做一次校验，旧密码正确才可以修改为新密码
     // $res = $bmobUser->requestEmailVerify("h622222225@126.com"); //请求验证Email
