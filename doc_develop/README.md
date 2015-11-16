@@ -1024,6 +1024,9 @@ $res = $bmobUser->loginByMobile("131xxxxxxxx","745399");
     "sessionToken"=>"pnktnjyb996sj4p156gjtp4im"
 ```
 
+注：登录后返回的sessionToken是用于更新用户信息，删除用户，修改用户密码，sessionToken的有效期是一年。如果开放者需要实现保持登录状态N天的功能，那么可以在用户信息验证成功后，用php的session做状态保持，控制session的有效期就可以了。
+
+
 ### 获取当前用户
 当注册一个用户后，你可以通过发送一个HTTP GET请求到用户注册成功时返回的HTTP请求头中的Location的URL获取用户的信息。比如，为了获取上面注册成功的用户：
 
@@ -1063,6 +1066,15 @@ $res = $bmobUser->update("415b8fe99a", "050391db407114d9801c8f2788c6b25a", array
 }
 ```
 
+如果开发者需要在用户不登录的情况下更新用户的信息，那么phpsdk也提供了直接使用masterKey强制更新用户信息的方案，可通过下面的方法查看masterKey的值：
+![](image/Masterkey.png)
+
+使用masterKey更新用户信息的方法如下：
+```
+$res = $bmobUser->updateByMasterKey("0290813a89", "e09fb5cbb5b825c78989504604c0dcff", array("phone"=>"02011122")); // 通过masterKey更新用户的信息
+```
+
+上面的e09fb5cbb5b825c78989504604c0dcff是masterKey。
 
 **在更新用户信息时，如果用户邮箱有变更并且在管理后台打开了邮箱验证选项的话，Bmob云后端同样会自动发动一封验证邮件给用户。**
 
@@ -1072,6 +1084,13 @@ $res = $bmobUser->update("415b8fe99a", "050391db407114d9801c8f2788c6b25a", array
 ```
 $res = $bmobUser->delete("415b8fe99a", "050391db407114d9801c8f2788c6b25a"); // 删除id为415b8fe99a的用户, 第一参数是用户id, 第二个参数为sessiontoken,在用户登录或注册后获取, 必填
 ```
+
+如果开发者需要在用户不登录的情况下更新用户的信息，那么phpsdk也提供了直接使用masterKey强制更新用户信息的方案，使用masterKey更新用户信息的方法如下：
+```
+$res = $bmobUser->deleteByMasterKey("0290813a89", "e09fb5cbb5b825c78989504604c0dcff"); // 通过masterKey删除用户
+```
+
+上面的e09fb5cbb5b825c78989504604c0dcff是masterKey。
 
 ### 查询用户
 你可以一次获取多个用户，只要向用户的根URL发送一个GET请求，没有任何URL参数的话，可以简单地列出所有用户：
