@@ -2447,3 +2447,7 @@ array（
 ）
 
 ```
+
+## 注意
+
+如果公司有代理服务器，通过php_curl访问外网时，需要在php中设置下代理，curl_setopt($ch, CURLOPT_PROXY, $proxy)就能顺利访问外网．
