@@ -818,39 +818,42 @@ $res=$bmobObj->increment("bd89c6bce9","score",array(-2)); //id为bd89c6bce9的fi
 
 Bmob的文件上传有整个文件上传和分片上传两种方式，可以分别实现小文件上传和大文件的上传。
 
+注意:旧版的文件上传接口"uploadFile"在php sdk中不再提供, bmob服务端将于2016.07.13停止支持文件上传接口"uploadFile",请各位开发者尽快升级php sdk使用新版本的文件上传。
+
 ### 整个文件上传
-上传整个文件到bmob，发送一个POST请求到file路径，参数是：文件名，。
+上传整个文件到bmob，发送一个POST请求到file路径，参数是：文件名。
 上传一个 hello.txt 文件实现方法如下：
 
 ```php
 $bmobFile = new BmobFile();
 //第一个参数是文件的名称,第二个参数是文件的url(可以是本地路径,最终是通过file_get_contents获取文件内容)
-$res=$bmobFile->uploadFile("heelo.txt","http://file.bmob.cn/M02/17/99/oYYBAFYfXS6AKB96AAAABNsGNwg872.txt");
+$res=$bmobFile->uploadFile2("heelo.txt","http://file.bmob.cn/M02/17/99/oYYBAFYfXS6AKB96AAAABNsGNwg872.txt");
 ```
 
-返回的主体是一个JSON对象，包含：文件名（filename）、分组（group）、文件地址（url）。 http://file.bmob.cn/ + url 就是文件上传成功后的完整地址，返回的Http Headers中的Location会包含该完整地址:
+返回的主体是一个JSON对象，包含：文件名（filename）、cdn类型（cdn）、文件地址（url）
 
 ```php
-[filename] => heelo.txt [group] => group1 [url] => M02/57/6A/oYYBAFYy3amAQI7cAAAAAjP0FTs923.txt
+
+[filename] => heelo.txt [cdn] => upyun [url] => http://bmob-cdn-1.b0.upaiyun.com/txt/50c68add4050583680429843337d608c.txt
 
 ```
 
 然后你需要把上传后的文件对象上传:
 
 ```php
-$fileArray = array("__type"=>"File", "group"=>$res->group,"filename"=>$res->filename,"url"=>$res->url);
+$fileArray = array("__type"=>"File", "cdn"=>$res->cdn,"filename"=>$res->filename,"url"=>$res->url);
 $res=$bmobObj->create(array("score"=>11,"file"=>$fileArray)); 
 ```
 
 ### 删除文件
 
-删除文件，必须要知道文件的url，如下：
+删除文件，必须要知道文件的url和cdn类型，如下：
 
 ```php
-$res=$bmobFile->delete("M02/54/09/oYYBAFYxx4uAbgTcAAAbpS8UHE45961.js");
+$res=$bmobFile->delete2("upyun", "http://bmob-cdn-1.b0.upaiyun.com/png/e7a0836940aa935f809ddbfd98a7ee74.png");
 ```
 
-其中M02/54/09/oYYBAFYxx4uAbgTcAAAbpS8UHE45961.js是文件的url。
+其中http://bmob-cdn-1.b0.upaiyun.com/png/e7a0836940aa935f809ddbfd98a7ee74.png是文件上传接口返回的url, upyun是CDN类型。
 
 返回结果格式如下：
 

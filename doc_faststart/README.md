@@ -22,6 +22,7 @@ class BmobConfig{
 	const APPID = '';       //替换后台"应用密钥"中的Application ID
 	const RESTKEY = '';     //后台"应用密钥"中的REST API Key
 	const BMOBURL = 'https://api.bmob.cn/1/';   //保持不变
+    const BMOBURLTWO = 'https://api.bmob.cn/2/';   //保持不变
 
 }
 ```

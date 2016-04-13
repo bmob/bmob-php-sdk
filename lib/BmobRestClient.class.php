@@ -13,6 +13,7 @@ class BmobRestClient
     private $_bmobAppid = '';
     private $_bmobRestkey = '';
     private $_bmobUrl = '';
+    private $_bmobUrlTwo = '';
 
     public $data;
     public $sendRequestUrl = '';
@@ -24,10 +25,15 @@ class BmobRestClient
         $this->_bmobAppid = BmobConfig::APPID;
         $this->_bmobRestkey = BmobConfig::RESTKEY;
         $this->_bmobUrl = BmobConfig::BMOBURL;
+        $this->_bmobUrlTwo = BmobConfig::BMOBURLTWO;
 
         if (empty($this->_bmobAppid) || empty($this->_bmobRestkey)) {
             $this->throwError('必须要设置Application ID 和 REST API Key');
         }
+
+        if (!$this->_bmobUrlTwo) {
+            $this->throwError('必须要在BmobConfig.class.php中设置BMOBURLTWO的值, 请参考github上的设置');
+        }       
 
         $version = curl_version();
 
@@ -73,7 +79,7 @@ class BmobRestClient
      * 所有的请求都通过这个方法发送
      * @param  $args
      */
-    protected function sendRequest($args)
+    protected function sendRequest($args, $apiVersion = 1)
     {
         $c = curl_init();
         curl_setopt($c, CURLOPT_TIMEOUT, 30);
@@ -85,7 +91,11 @@ class BmobRestClient
         curl_setopt($c, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($c, CURLOPT_SSL_VERIFYHOST, false);
 
-        $url = $this->_bmobUrl . $args['sendRequestUrl'];
+        if( 2 == $apiVersion ){
+            $url = $this->_bmobUrlTwo . $args['sendRequestUrl'];
+        } else {
+            $url = $this->_bmobUrl . $args['sendRequestUrl'];
+        }
 
         //Users的方法
         if (substr($args['sendRequestUrl'], 0, 5) == 'users') {

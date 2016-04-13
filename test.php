@@ -72,8 +72,9 @@ try {
     //上传文件
     $bmobFile = new BmobFile();
     //第一个参数是文件的名称,第二个参数是文件的url(可以是本地路径,最终是通过file_get_contents获取文件内容)
-    // $res=$bmobFile->uploadFile("988.png","http://file.bmob.cn/M02/4A/CB/oYYBAFYu36mAAIN_AAEbMJNyjaw988.png");
-    //$res=$bmobFile->delete("M02/57/6F/oYYBAFYy32mADr34AAAAAjP0FTs528.txt");
+    //返回值:{ public $cdn => string(5) "upyun" public $filename => string(7) "988.png" public $url => string(73) "http://bmob-cdn-1.b0.upaiyun.com/png/463305b840dddbf480a326d0775cc556.png" } 
+    // $res=$bmobFile->uploadFile2("988.png","http://file.bmob.cn/M02/4A/CB/oYYBAFYu36mAAIN_AAEbMJNyjaw988.png");
+    // $res=$bmobFile->delete2("upyun", "http://bmob-cdn-1.b0.upaiyun.com/png/e7a0836940aa935f809ddbfd98a7ee74.png");
 
 
     // // 生成缩微图
@@ -110,9 +111,9 @@ try {
     // $res = $bmobPush->push(array("data"=>array("alert"=>"hello"))); //推送消息
 
     ////支付的例子
-    // $bmobPay = new BmobPay();
-    // $res = $bmobPay->getOrder("fd343232cc6a94c6");  //查询订单
-    // $res =$bmobPay->webPay(0.01, "充值", "给应用充值0.01元");
+     $bmobPay = new BmobPay();
+     //$res = $bmobPay->getOrder("fd343232cc6a94c6");  //查询订单
+     // $res =$bmobPay->webPay(0.01, "充值", "给应用充值0.01元");
 
     ////短信相关
     $bmobSms = new BmobSms();
@@ -178,7 +179,7 @@ try {
 
     // $res = $bmobUser->requestPasswordReset("bmobtest111@126.com"); // 请求重设密码,前提是用户将email与他们的账户关联起来
     // $res = $bmobUser->delete("415b8fe99a", "050391db407114d9801c8f2788c6b25a"); // 删除id为415b8fe99a的用户, 第一参数是用户id, 第二个参数为sessiontoken,在用户登录或注册后获取, 必填
-    $res = $bmobUser->deleteByMasterKey("0290813a89", "e09fb5cbb5b825c78989504604c0dcff"); // 通过masterKey删除用户
+    // $res = $bmobUser->deleteByMasterKey("0290813a89", "e09fb5cbb5b825c78989504604c0dcff"); // 通过masterKey删除用户
     // $res = $bmobUser->resetPasswordBySmsCode("111111", "134554"); // 使用短信验证码进行密码重置
     // $res = $bmobUser->updateUserPassword("WXHsFFFd", "d365d5834061d9f6805047131893ae13" , "111111", "111111"); //用户输入一次旧密码做一次校验，旧密码正确才可以修改为新密码
     // $res = $bmobUser->requestEmailVerify("h622222225@126.com"); //请求验证Email
