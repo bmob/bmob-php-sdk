@@ -820,6 +820,13 @@ Bmob的文件上传有整个文件上传和分片上传两种方式，可以分�
 
 注意:旧版的文件上传接口"uploadFile"在php sdk中不再提供, bmob服务端将于2016.07.13停止支持文件上传接口"uploadFile",请各位开发者尽快升级php sdk使用新版本的文件上传。
 
+如果需要上传大文件,请在代码中调整php的配置:
+ini_set('max_execution_time', 30); //每个PHP页面运行的最大时间值(秒)，默认30秒
+ini_set('max_input_time', 60); //每个PHP页面接收数据所需的最大时间，默认60秒
+ini_set('memory_limit', '8m'); //每个PHP页面所吃掉的最大内存，默认8M
+ini_set('upload_max_filesize', '2m'); //即允许上传文件大小的最大值。默认为2M
+ini_set('post_max_size', '8m'); //指通过表单POST给PHP的所能接收的最大值，包括表单里的所有值。默认为8M
+
 ### 整个文件上传
 上传整个文件到bmob，发送一个POST请求到file路径，参数是：文件名。
 上传一个 hello.txt 文件实现方法如下：

@@ -38,6 +38,12 @@ class BmobFile extends BmobRestClient
 
     /**
      * 用CDN上传文件
+     如果需要上传大文件,请在代码中调整php的配置:
+    ini_set('max_execution_time', 30); //每个PHP页面运行的最大时间值(秒)，默认30秒
+    ini_set('max_input_time', 60); //每个PHP页面接收数据所需的最大时间，默认60秒
+    ini_set('memory_limit', '8m'); //每个PHP页面所吃掉的最大内存，默认8M
+    ini_set('upload_max_filesize', '2m'); //即允许上传文件大小的最大值。默认为2M
+    ini_set('post_max_size', '8m'); //指通过表单POST给PHP的所能接收的最大值，包括表单里的所有值。默认为8M
      * @param array $data 批量操作的数据
      */
     public function uploadFile2($fileName, $filePath)
