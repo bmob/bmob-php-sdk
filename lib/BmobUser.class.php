@@ -256,7 +256,7 @@ class BmobUser extends BmobRestClient
                 'method' => 'PUT',
                 'sendRequestUrl' => 'updateUserPassword/' . $userId,
                 'sessionToken' => $sessionToken,
-                'data' => array("oldPassword" => $newPassword, "newPassword" => $newPassword)
+                'data' => array("oldPassword" => $oldPassword, "newPassword" => $newPassword)
             ));
 
             return $request;
