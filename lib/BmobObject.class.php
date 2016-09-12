@@ -23,7 +23,28 @@ class BmobObject extends BmobRestClient
         parent::__construct();
     }
 
-
+    public function getRequestUrl($id=""){
+        $className = $this->_className;
+        if( "_User" == $className ){
+            $className = "users";
+        } elseif ( "_Installation" == $className ) {
+            $className = "installations";
+        } 
+        if( $id ){
+            if ( $this->_className!="_User" && $this->_className!="_Installation") {
+                return 'classes/' . $className . '/' . $id;
+            }else{
+                return $className . '/' . $id;
+            }
+        } else {
+            if ( $this->_className!="_User" && $this->_className!="_Installation") {
+                return 'classes/' . $className ;
+            }else{
+                return $className ;
+            }
+        }
+        
+    }
 
     /**
      * 添加对象
@@ -38,7 +59,7 @@ class BmobObject extends BmobRestClient
         if (count($this->data) > 0 && $this->_className != '') {
             $sendRequest = $this->sendRequest(array(
                 'method' => 'POST',
-                'sendRequestUrl' => 'classes/' . $this->_className,
+                'sendRequestUrl' => $this->getRequestUrl(""),
                 'data' => $this->data,
             ));
             return $sendRequest;
@@ -59,13 +80,13 @@ class BmobObject extends BmobRestClient
             if ($id) {
                 $sendRequest = $this->sendRequest(array(
                     'method' => 'GET',
-                    'sendRequestUrl' => 'classes/' . $this->_className . '/' . $id,
+                    'sendRequestUrl' => $this->getRequestUrl($id),
                     'condition' => $condition,
                 ));
             } else {
                 $sendRequest = $this->sendRequest(array(
                     'method' => 'GET',
-                    'sendRequestUrl' => 'classes/' . $this->_className,
+                    'sendRequestUrl' => $this->getRequestUrl(""),
                     'condition' => $condition,
                 ));
             }
@@ -96,7 +117,7 @@ class BmobObject extends BmobRestClient
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'PUT',
-                'sendRequestUrl' => 'classes/' . $this->_className . '/' . $id,
+                'sendRequestUrl' => $this->getRequestUrl($id),
                 'data' => $this->data,
             ));
 
@@ -116,7 +137,7 @@ class BmobObject extends BmobRestClient
         if ($this->_className != '' || !empty($id)) {
             $sendRequest = $this->sendRequest(array(
                 'method' => 'DELETE',
-                'sendRequestUrl' => 'classes/' . $this->_className . '/' . $id
+                'sendRequestUrl' => $this->getRequestUrl($id),
             ));
 
             return $sendRequest;
@@ -141,7 +162,7 @@ class BmobObject extends BmobRestClient
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'PUT',
-                'sendRequestUrl' => 'classes/' . $this->_className . '/' . $id,
+                'sendRequestUrl' => $this->getRequestUrl($id),
                 'data' => $this->data,
             ));
 
@@ -168,7 +189,7 @@ class BmobObject extends BmobRestClient
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'PUT',
-                'sendRequestUrl' => 'classes/' . $this->_className . '/' . $id,
+                'sendRequestUrl' => $this->getRequestUrl($id),
                 'data' => $this->data,
             ));
 
@@ -195,7 +216,7 @@ class BmobObject extends BmobRestClient
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'POST',
-                'sendRequestUrl' => 'classes/' . $this->_className,
+                'sendRequestUrl' => $this->getRequestUrl(""),
                 'data' => $this->data,
             ));
 
@@ -223,7 +244,7 @@ class BmobObject extends BmobRestClient
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'PUT',
-                'sendRequestUrl' => 'classes/' . $this->_className . '/' . $id,
+                'sendRequestUrl' => $this->getRequestUrl($id),
                 'data' => $this->data,
             ));
 
@@ -251,7 +272,7 @@ class BmobObject extends BmobRestClient
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'PUT',
-                'sendRequestUrl' => 'classes/' . $this->_className . '/' . $id,
+                'sendRequestUrl' => $this->getRequestUrl($id),
                 'data' => $this->data,
             ));
 
@@ -277,7 +298,7 @@ class BmobObject extends BmobRestClient
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'POST',
-                'sendRequestUrl' => 'classes/' . $this->_className,
+                'sendRequestUrl' => $this->getRequestUrl(""),
                 'data' => $this->data,
             ));
 
@@ -303,7 +324,7 @@ class BmobObject extends BmobRestClient
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'POST',
-                'sendRequestUrl' => 'classes/' . $this->_className,
+                'sendRequestUrl' => $this->getRequestUrl(""),
                 'data' => $this->data,
             ));
 
@@ -331,7 +352,7 @@ class BmobObject extends BmobRestClient
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'PUT',
-                'sendRequestUrl' => 'classes/' . $this->_className . '/' . $id,
+                'sendRequestUrl' => $this->getRequestUrl($id),
                 'data' => $this->data,
             ));
 
@@ -358,7 +379,7 @@ class BmobObject extends BmobRestClient
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'PUT',
-                'sendRequestUrl' => 'classes/' . $this->_className . '/' . $id,
+                'sendRequestUrl' => $this->getRequestUrl($id),
                 'data' => $this->data,
             ));
 
@@ -385,7 +406,7 @@ class BmobObject extends BmobRestClient
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'PUT',
-                'sendRequestUrl' => 'classes/' . $this->_className . '/' . $id,
+                'sendRequestUrl' => $this->getRequestUrl($id),
                 'data' => $this->data,
             ));
 

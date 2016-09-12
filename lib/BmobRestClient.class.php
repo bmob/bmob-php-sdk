@@ -18,6 +18,7 @@ class BmobRestClient
     public $data;
     public $sendRequestUrl = '';
     public $responseData = '';
+    public $masterKey = '';
 
 
     protected function __construct()
@@ -63,6 +64,14 @@ class BmobRestClient
     }
 
     /**
+     * 设置master key
+     * @param string $masterKey
+     */
+    public function setMasterkey($masterKey){
+        $this->masterKey = $masterKey;
+    } 
+
+    /**
      * 重设对象的属性
      * @param array $data
      */
@@ -98,73 +107,46 @@ class BmobRestClient
         }
 
         //Users的方法
+        $header = array(
+                    'Content-Type: application/json',
+                    'X-bmob-Application-Id: ' . $this->_bmobAppid,
+                    'X-bmob-REST-API-Key: ' . $this->_bmobRestkey,
+                  );
         if (substr($args['sendRequestUrl'], 0, 5) == 'users') {
             if (isset($args['sessionToken'])) {
                 //需要传入token, 用于更新删除的操作
-                curl_setopt($c, CURLOPT_HTTPHEADER, array(
-                    'Content-Type: application/json',
-                    'X-bmob-Application-Id: ' . $this->_bmobAppid,
-                    'X-bmob-REST-API-Key: ' . $this->_bmobRestkey,
-                    'X-Bmob-Session-Token: ' . $args['sessionToken'],
-                ));
+                array_push($header, 'X-Bmob-Session-Token:'.$args['sessionToken']);
             } elseif (isset($args['masterKey'])) {
-                //需要传入X-Bmob-Master-Key
-                curl_setopt($c, CURLOPT_HTTPHEADER, array(
-                    'Content-Type: application/json',
-                    'X-bmob-Application-Id: ' . $this->_bmobAppid,
-                    'X-bmob-REST-API-Key: ' . $this->_bmobRestkey,
-                    'X-Bmob-Master-Key: ' . $args['masterKey'],
-                ));                    
+                //需要传入X-Bmob-Master-Key   
+                array_push($header, 'X-Bmob-Master-Key:'.$args['masterKey']);           
             } else {
-                curl_setopt($c, CURLOPT_HTTPHEADER, array(
-                    'Content-Type: application/json',
-                    'X-bmob-Application-Id: ' . $this->_bmobAppid,
-                    'X-bmob-REST-API-Key: ' . $this->_bmobRestkey,
-                ));
+
             }
         } elseif (substr($args['sendRequestUrl'], 0, 7) == 'classes') {
-            //对象的方法
-            curl_setopt($c, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'X-bmob-Application-Id: ' . $this->_bmobAppid,
-                'X-bmob-REST-API-Key: ' . $this->_bmobRestkey,
-            ));
+            
         } elseif (strpos($args['sendRequestUrl'], "updateUserPassword") !== false) {
             //对象的方法
-            curl_setopt($c, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'X-bmob-Application-Id: ' . $this->_bmobAppid,
-                'X-bmob-REST-API-Key: ' . $this->_bmobRestkey,
-                'X-Bmob-Session-Token: ' . $args['sessionToken'],
-            ));
+           array_push($header, 'X-Bmob-Session-Token:'.$args['sessionToken']);
         } elseif (strpos($args['sendRequestUrl'], "roles") !== false && $args['method'] == "DELETE") {
             //对象的方法
-            curl_setopt($c, CURLOPT_HTTPHEADER, array(
-                'X-bmob-Application-Id: ' . $this->_bmobAppid,
-                'X-bmob-REST-API-Key: ' . $this->_bmobRestkey,
-                'X-Bmob-Session-Token: ' . $args['sessionToken'],
-            ));
+           array_push($header, 'X-Bmob-Session-Token:'.$args['sessionToken']);
         } elseif (strpos($args['sendRequestUrl'], "apps") !== false) {
             //对象的方法
-            curl_setopt($c, CURLOPT_HTTPHEADER, array(
-                'X-Bmob-Email: ' . $args['X-Bmob-Email'],
-                'X-Bmob-Password: ' . $args['X-Bmob-Password'],
-                'Content-Type: application/json',
-            ));
+
         } elseif (strpos($args['sendRequestUrl'], "schemas") !== false) {
             //对象的方法
-            curl_setopt($c, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'X-bmob-Application-Id: ' . $this->_bmobAppid,
-                'X-Bmob-Master-Key: ' . $args['X-Bmob-Master-Key'],
-            ));
+
         } else {
-            curl_setopt($c, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'X-bmob-Application-Id: ' . $this->_bmobAppid,
-                'X-bmob-REST-API-Key: ' . $this->_bmobRestkey,
-            ));
+
         }
+
+        if( $this->masterKey ){
+             array_push($header, 'X-Bmob-Master-Key:'.$this->masterKey);        
+        }
+        curl_setopt($c, CURLOPT_HTTPHEADER, $header);
+
+        // var_dump($url);
+        // print_r($header);
 
         //生成post data
         if ($args['method'] == 'PUT' || $args['method'] == 'POST') {
