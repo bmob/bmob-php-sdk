@@ -263,6 +263,15 @@ class BmobRestClient
                     }
                     return $data;
                     break;
+                case 'updateRelPointer':
+                   
+                    return array(
+                            "__type" => "Pointer",
+                            "className" => $params[1],
+                            "objectId" => $params[2],
+                        );
+                    
+                    break;                     
                 case 'addRelRelation':
                     $data = array();
                     foreach ($params as $param) {

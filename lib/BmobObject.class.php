@@ -348,7 +348,7 @@ class BmobObject extends BmobRestClient
         $this->cleanData();
         if ($this->_className != '' && !empty($field) && !empty($otherObject) && !empty($otherObjectId)) {
 
-            $this->data[$field] = $this->dataType('addRelPointer', array($otherObject, $otherObjectId));
+            $this->data[$field] = $this->dataType('updateRelPointer', array($field, $otherObject, $otherObjectId));
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'PUT',
