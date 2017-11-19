@@ -27,13 +27,7 @@ include_once '../lib/BmobPay.class.php';
 		$bmobPay = new BmobPay();
 		$res = $bmobPay->webPay(2.2, "充值", "给应用充值2.2元", 3);
 		// var_dump($res);
-
-		/*
-		订单查询的方法：
-		1. 通过$res->tradeNo获取订单号
-		2. php服务端封装接口BmobPay->getOrder($tradeNo),假设接口名为checkOrder()用于订单查询
-		3. 在网页写过js的定时器，定时查询checkOrder()，获取订单是否已支付成功
-		*/		
+	
 	?>
 
 	 <div style="width: 300px;height: 300px;margin: 0 auto;" id="div_div"></div>	
