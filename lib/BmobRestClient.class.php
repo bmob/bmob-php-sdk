@@ -109,6 +109,7 @@ class BmobRestClient
         //Users的方法
         $header = array(
                     'Content-Type: application/json',
+                    'X-Bmob-SDK-Type: php',
                     'X-bmob-Application-Id: ' . $this->_bmobAppid,
                     'X-bmob-REST-API-Key: ' . $this->_bmobRestkey,
                   );
@@ -195,7 +196,7 @@ class BmobRestClient
         $responseCode = curl_getinfo($c, CURLINFO_HTTP_CODE);
         curl_close($c);
         $expectedCode = array('200', '201');
-        return $this->checkResponse($response, $responseCode, $expectedCode);
+        return $this->checkResponse($args,$response, $responseCode, $expectedCode);
     }
 
     /**
@@ -327,7 +328,7 @@ class BmobRestClient
      * @param array $responseCode
      * @param array $expectedCode
      */
-    private function checkResponse($response, $responseCode, $expectedCode)
+    private function checkResponse($args, $response, $responseCode, $expectedCode)
     {
         if (!in_array($responseCode, $expectedCode)) {
             $error = json_decode($response, true);
@@ -342,7 +343,16 @@ class BmobRestClient
                 $decodeResponse = json_decode($response);
                 //把云端代码返回值从result中剥离出来
                 if (isset($decodeResponse->result)) {
+                    $tradeNo = "";
+                    //订单接口，要把订单号返回
+                    if("POST" == $args["method"] && "pay" == $args["sendRequestUrl"]) {
+                        $tradeNo  = $decodeResponse->out_trade_no;
+                    }
                     $decodeResponse = $decodeResponse->result;
+                    if("POST" == $args["method"] && "pay" == $args["sendRequestUrl"]) {
+                        $decodeResponse->tradeNo  = $tradeNo;
+                    }                   
+
                 }
                 return $decodeResponse;
             }

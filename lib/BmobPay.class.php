@@ -34,17 +34,20 @@ class BmobPay extends BmobRestClient
     }
 
     /**
-     * 查询订单
-     * @param  $id
+     * 支付扫码接口
+     * @param  $orderPrice  价格
+     * @param  $productName 商品名称
+     * @param  $body     商品描述
+     * @param  $payment  2:微信 3.qq  
      */
-    public function webPay($orderPrice, $productName, $body)
+    public function webPay($orderPrice, $productName, $body, $payment)
     {
         if (!empty($orderPrice) && !empty($productName) && !empty($body)  ) {
             $this->cleanData();
             $sendRequest = $this->sendRequest(array(
                 'method' => 'POST',
-                'sendRequestUrl' => 'webpay' ,
-                'data' => array("order_price"=>$orderPrice, "product_name"=>$productName, "body"=>$body ),
+                'sendRequestUrl' => 'pay' ,
+                'data' => array("order_price"=>$orderPrice, "product_name"=>$productName, "body"=>$body, "payment"=>$payment),
             ));
             return $sendRequest;
         } else {
