@@ -74,15 +74,16 @@ class BmobFile extends BmobRestClient
             //重设对象的属性
             $this->cleanData();
 
-            $path = pathinfo($url);  
-            if( !$path ){
-                $this->throwError('解析url错误, 正确的url是类似于:http://bmob-cdn-10.b0.upaiyun.com/2017/02/08/f39178e3409990ca80e0d9d60ecef768.png');
+            // $path = pathinfo($url);  
+            // if( !$path ){
+            //     $this->throwError('解析url错误, 正确的url是类似于:http://bmob-cdn-10.b0.upaiyun.com/2017/02/08/f39178e3409990ca80e0d9d60ecef768.png');
+            // }
+            if(strpos($url, "http://")>=0) {
+                $url = trim($url, "http://");
+            } else {
+                $url = trim($url, "https://");
             }
-           if(strpos($url, "http://")>=0) {
-                $url = trim($url, "http://bmob-cdn-10.b0.upaiyun.com");
-           } else {
-                $url = trim($url, "https://bmob-cdn-10.b0.upaiyun.com");
-           }
+            $url = substr($url, strpos($url, "/") + 1);
 
             $sendRequest = $this->sendRequest(array(
                 'method' => 'DELETE',
