@@ -22,7 +22,7 @@ try {
     $bmobObj = new BmobObject("GameScore");
     // $res=$bmobObj->create(array("playerName"=>"game","score"=>20)); //添加对象
     // $res=$bmobObj->get("bd89c6bce9"); // 获取id为bd89c6bce9的对象
-    // $res=$bmobObj->get(); // 获取所有对象
+    $res=$bmobObj->get(); // 获取所有对象
     // $res=$bmobObj->update("bd89c6bce9", array("score"=>60,"playerName"=>"game")); //更新对象bd89c6bce9, 任何您未指定的key都不会更改,所以您可以只更新对象数据的一个子集
     // $res=$bmobObj->delete("bd89c6bce9"); //删除对象bd89c6bce9
     // $res=$bmobObj->get("",array('where={"playerName":"game"}','limit=2')); //对象的查询,这里是表示查找playerName为"game"的对象，只返回２个结果
@@ -125,7 +125,6 @@ try {
 
     ////短信相关
     $bmobSms = new BmobSms();
-    // $res = $bmobSms->sendSms("131xxxxxxxx", "您的验证码是：222222, 有效期是10分钟。"); //发送短信
     // $res = $bmobSms->sendSmsVerifyCode("131xxxxxxxx", "注册模板");  //发送短信验证码
     // $res = $bmobSms->verifySmsCode("131xxxxxxxx","028584");  //发送短信验证码
     // $res = $bmobSms->querySms("6466181");  //查询短信状态
