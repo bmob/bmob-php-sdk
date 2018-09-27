@@ -13,12 +13,16 @@ class BmobObject extends BmobRestClient
     public $_includes = array();
     private $_className = '';
 
-    public function __construct($class = '')
+    public function __construct($class = '', $sessionToken = '')
     {
         if ($class != '') {
             $this->_className = $class;
         } else {
             $this->throwError('创建对象时请包含对象id');
+        }
+
+        if ($sessionToken != '') {
+            $this->bmobSessionToken = $sessionToken;
         }
         parent::__construct();
     }

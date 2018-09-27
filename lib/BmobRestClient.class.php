@@ -12,13 +12,16 @@ class BmobRestClient
 
     private $_bmobAppid = '';
     private $_bmobRestkey = '';
+
     private $_bmobUrl = '';
     private $_bmobUrlTwo = '';
+
 
     public $data;
     public $sendRequestUrl = '';
     public $responseData = '';
     public $masterKey = '';
+    public $bmobSessionToken = '';
 
 
     protected function __construct()
@@ -139,6 +142,10 @@ class BmobRestClient
 
         } else {
 
+        }
+
+        if( $this->bmobSessionToken ){
+            array_push($header, 'X-Bmob-Session-Token:'.$this->bmobSessionToken);
         }
 
         if( $this->masterKey ){

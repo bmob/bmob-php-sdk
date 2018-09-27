@@ -19,7 +19,7 @@ try {
     /*
      *  bmobObject 的例子
      */
-    $bmobObj = new BmobObject("GameScore");
+    $bmobObj = new BmobObject("GameScore","sdf2332sddfdsdf");
     // $res=$bmobObj->create(array("playerName"=>"game","score"=>20)); //添加对象
     // $res=$bmobObj->get("bd89c6bce9"); // 获取id为bd89c6bce9的对象
     $res=$bmobObj->get(); // 获取所有对象
