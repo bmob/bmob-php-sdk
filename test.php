@@ -127,7 +127,6 @@ try {
     $bmobSms = new BmobSms();
     // $res = $bmobSms->sendSmsVerifyCode("131xxxxxxxx", "注册模板");  //发送短信验证码
     // $res = $bmobSms->verifySmsCode("131xxxxxxxx","028584");  //发送短信验证码
-    // $res = $bmobSms->querySms("6466181");  //查询短信状态
 
     ////app相关
     // $bmobApp = new BmobApp();

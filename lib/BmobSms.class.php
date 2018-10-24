@@ -59,22 +59,7 @@ class BmobSms extends BmobRestClient
         }
     }
 
-    /**
-     * 查询短信状态
-     * @param  $smsId    请求短信验证码返回的smsId值
-     */
-    public function querySms($smsId)
-    {
-        if (!empty($smsId)) {
-            $sendRequest = $this->sendRequest(array(
-                'method' => 'GET',
-                'sendRequestUrl' => 'querySms/' . $smsId,
-            ));
-            return $sendRequest;
-        } else {
-            $this->throwError('参数不能为空');
-        }
-    }
+    
 
 
 }
