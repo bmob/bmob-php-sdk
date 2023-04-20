@@ -18,7 +18,6 @@ Bmob PHP SDK开发文档
 doc_faststart：快速入门文档
 doc_develop：详细开发文档
 lib：php的类库
-pay：支付的demo
 test.php: 一些demo
 ```
 
@@ -31,7 +30,7 @@ test.php: 一些demo
 class BmobConfig{
 	const APPID = '';       //替换后台"应用密钥"中的Application ID
 	const RESTKEY = '';     //后台"应用密钥"中的REST API Key
-	const BMOBURL = 'https://api.bmob.cn/1/';   //保持不变
+	//其他保持不变，不要修改
 
 }
 ```
@@ -124,8 +123,6 @@ Bmob云端代码调用类
 
 # Bmob官方信息
 
-官方网址：[http://www.bmob.cn](http://www.bmob.cn)
+官方网址：[https://www.bmobapp.com/](https://www.bmobapp.com/)
 
-问答社区：[http://wenda.bmob.cn](http://wenda.bmob.cn)
-
-技术邮箱：support@bmob.cn
+技术邮箱：support@bmobapp.com

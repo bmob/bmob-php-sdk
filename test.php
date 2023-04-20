@@ -111,18 +111,6 @@ try {
     // $res = $bmobRole->updateRole("d4642acf90", "users", "AddRelation", $data); //更改角色
     // $res = $bmobRole->deleteRole("d4642acf90", "d365d5834061d9f6805047131893ae13"); //删除角色
 
-    ////推送的例子
-    // $bmobPush = new BmobPush();
-    // 添加设备表
-    // $res = $bmobPush->addInstallations(array("deviceType"=>"ios","deviceToken"=>"abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789","channels"=>array("Giants")));
-    // $res = $bmobPush->updateInstallations("fdcc6a94c6",array("injuryReports"=>true)); //更新设备表
-    // $res = $bmobPush->push(array("data"=>array("alert"=>"hello"))); //推送消息
-
-    ////支付的例子
-     $bmobPay = new BmobPay();
-     //$res = $bmobPay->getOrder("fd343232cc6a94c6");  //查询订单
-     // $res =$bmobPay->webPay(0.01, "充值", "给应用充值0.01元");
-
     ////短信相关
     $bmobSms = new BmobSms();
     // $res = $bmobSms->sendSmsVerifyCode("131xxxxxxxx", "注册模板");  //发送短信验证码

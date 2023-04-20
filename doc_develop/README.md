@@ -2,18 +2,9 @@
 
 Bmob平台为您的移动应用提供了一个完整的后端解决方案，我们提供轻量级的SDK开发包，让开发者以最小的配置和最简单的方式使用Bmob平台提供的服务，进而完全消除开发者编写服务器代码以及维护服务器的操作。
 
-
-## 快速入门
-
-建议您在阅读本开发文档之前，先阅读我们提供的 [php快速入门文档](http://docs.bmob.cn/phpsdk/index.html?menukey=otherdoc&key=phpsdk)，便于您后续的开发。
-
-
 ## 应用程序
 在Bmob平台注册后，每个账户可创建多个应用程序，创建的每个应用程序有各自的Application ID，应用程序将凭其Application ID使用Bmob SDK。
 
-## 应用安全
-
-请大家在使用Bmob开发应用程序之前，仔细阅读“数据与安全”的文档：[http://docs.bmob.cn/datasafety/index.html?menukey=otherdoc&key=datasafety](http://docs.bmob.cn/datasafety/index.html?menukey=otherdoc&key=datasafety)
 
 ## 数据类型
 
@@ -28,8 +19,6 @@ lib/BmobBatch.class.php：批量操作类
 lib/BmobFile.class.php：文件操作类
 lib/BmobImage.class.php：图片操作类
 lib/BmobRole.class.php：权限类
-lib/BmobPush.class.php：推送类
-lib/BmobPay.class.php：支付类
 lib/BmobSms.class.php：短信消息类
 lib/BmobApp.class.php：app操作类
 lib/BmobSchemas.class.php：数据表操作类
@@ -74,7 +63,7 @@ Key必须是字母和数字组成的字符串,Value可以是任何可以JSON编�
 
 每个对象都有一个类名，你可以通过类名来区分不同的数据，例如，我们可以把游戏得分对象称之为GameScore.我们推荐你使用  **NameYourClassesLikeThis** 和 **nameYourKeysLikeThis** 这样的格式为你的类名和Key命名，这可以使你的代码看起来很漂亮.
 
-当你从[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")中获取对象时，一些字段会被自动加上: createdAt, updatedAt 和 objectId， 这些字段的名字是保留的，你不能自行设置它们，我们上面设置的对象在获取时应该是下面的样子.
+当你从[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")中获取对象时，一些字段会被自动加上: createdAt, updatedAt 和 objectId， 这些字段的名字是保留的，你不能自行设置它们，我们上面设置的对象在获取时应该是下面的样子.
 ```
 array(
     "score"=> 1337,
@@ -89,7 +78,7 @@ array(
 createdAt和updatedAt都是UTC时间戳,以ISO 8601标准和毫秒级精度储存:YYYY-MM-DD HH:MM:SS. objectId是一个string,在类中唯一表明了一个对象。
 
 ###  数据类型
-到现在为止我们只使用了可以被标准JSON编码的值，[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")移动客户端SDK库同样支持日期,地理位置数据和指针数据、关系型数据。在php sdk中，这些值都被编码了，同时有一个"__type"字段来标识出它们所属的类型，所以如果你采用正确的编码的话就可以读或者写这些字段了。
+到现在为止我们只使用了可以被标准JSON编码的值，[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")移动客户端SDK库同样支持日期,地理位置数据和指针数据、关系型数据。在php sdk中，这些值都被编码了，同时有一个"__type"字段来标识出它们所属的类型，所以如果你采用正确的编码的话就可以读或者写这些字段了。
 
 Date类型包含了一个"iso"字段存储了一个UTC时间戳,以ISO 8601格式和毫秒级的精度来存储时间: YYYY-MM-DDTHH:MM:SS.MMMZ，或者 YYYY-MM-DDTHH:MM:SS
 ```
@@ -361,7 +350,7 @@ $res=$bmobObj->get("",array('$res=$bmobObj->get("",array("keys=score,playerName"
       $res = $bmobBql->query(array('bql'=>'select * from GameScore where score=11'));  
 ```
 
-更多请参考 [BQL 详细指南](http://docs.bmob.cn/bql/index.html?menukey=otherdoc&key=bql "BQL 详细指南") 。
+更多请参考 [BQL 详细指南](http://doc.bmobapp.com/other/bql/index.html "BQL 详细指南") 。
 
 BQL 还支持占位符查询，where 和 limit 子句的条件参数可以使用问号替换，然后通过 `values` 数组传入：
 
@@ -385,7 +374,7 @@ $res=$bmobObj->update("16d846f51c", array("score"=>60));
 
 ## 删除数据
 
-为了在[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")上删除一个对象，可以发送一个DELETE请求到指定的对象的URL，比如:
+为了在[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")上删除一个对象，可以发送一个DELETE请求到指定的对象的URL，比如:
 
 ```php
 $res=$bmobObj->delete("bd89c6bce9"); //删除对象bd89c6bce9
@@ -401,7 +390,7 @@ $res=$bmobObj->delete("bd89c6bce9"); //删除对象bd89c6bce9
 
 ## 数组
 
-为了存储数组型数据，[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")提供了3种操作来原子性地更改一个数组字段:
+为了存储数组型数据，[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")提供了3种操作来原子性地更改一个数组字段:
 
 **Add** 在一个数组字段的后面添加一些指定的对象(包装在一个数组内)
 
@@ -834,7 +823,7 @@ ini_set('post_max_size', '8m'); //指通过表单POST给PHP的所能接收的最
 ```php
 $bmobFile = new BmobFile();
 //第一个参数是文件的名称,第二个参数是文件的url(可以是本地路径,最终是通过file_get_contents获取文件内容)
-$res=$bmobFile->uploadFile2("heelo.txt","http://file.bmob.cn/M02/17/99/oYYBAFYfXS6AKB96AAAABNsGNwg872.txt");
+$res=$bmobFile->uploadFile2("heelo.txt","http://file.bmobapp.com/M02/17/99/oYYBAFYfXS6AKB96AAAABNsGNwg872.txt");
 ```
 
 返回的主体是一个JSON对象，包含：文件名（filename）、cdn类型（cdn）、文件地址（url）
@@ -894,7 +883,7 @@ $res=$bmobFile->delete2("upyun", "http://bmob-cdn-1.b0.upaiyun.com/png/e7a083694
 
 ```
 $bmobImage = new BmobImage();
-$data=array("image"=>"http://file.bmob.cn/M00/01/49/wKhkA1OEmUmAXRToAAIAco88Nk08205940.jpg","mode"=>0, "quality"=>100, 'width'=>100);
+$data=array("image"=>"http://file.bmobapp.com/M00/01/49/wKhkA1OEmUmAXRToAAIAco88Nk08205940.jpg","mode"=>0, "quality"=>100, 'width'=>100);
 $res=$bmobImage->imageThumbnail($data);
 ```
 
@@ -926,7 +915,7 @@ $res=$bmobImage->imageThumbnail($data);
 
 调用方式如下：
 ```
-$data=array("image"=>"http://file.bmob.cn/M01/FB/94/oYYBAFVsLzaATYHUAAInI2Hg05M737.jpg","watermark"=>"http://file.bmob.cn/M01/F8/4C/oYYBAFVru0uAa0yyAAAsGVkLsy8979.jpg",
+$data=array("image"=>"http://file.bmobapp.com/M01/FB/94/oYYBAFVsLzaATYHUAAInI2Hg05M737.jpg","watermark"=>"http://file.bmobapp.com/M01/F8/4C/oYYBAFVru0uAa0yyAAAsGVkLsy8979.jpg",
      	"dissolve"=>100, 'gravity'=>"SouthWest","distanceX"=>10,"distanceY"=>10);
 $res=$bmobImage->imagesWatermark($data);
 ```
@@ -944,12 +933,12 @@ $res=$bmobImage->imagesWatermark($data);
 ```
 
 ## 用户
-很多跨平台和跨系统的应用都有一个统一的登录流程，[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")通过REST API访问用户的账户让你实现该功能。
+很多跨平台和跨系统的应用都有一个统一的登录流程，[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")通过REST API访问用户的账户让你实现该功能。
 
-通常来说，用户这个类的功能与其他的对象是相同的，比如都没有限制模式(Schema Less)，User对象和其他对象不同的是一个用户必须有用户名(username)和密码(password)，密码会被自动地加密和存储。[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")强制你username和email这两个Key的值必须是不重复的。
+通常来说，用户这个类的功能与其他的对象是相同的，比如都没有限制模式(Schema Less)，User对象和其他对象不同的是一个用户必须有用户名(username)和密码(password)，密码会被自动地加密和存储。[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")强制你username和email这两个Key的值必须是不重复的。
 
 ### 属性
-[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")默认会有几个特定的属性：
+[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")默认会有几个特定的属性：
 username: 用户的用户名`（必需）`。
 password: 用户的密码`（必需）`。
 email: 用户的电子邮件地址`（可选）`。
@@ -957,7 +946,7 @@ email: 用户的电子邮件地址`（可选）`。
 ### 注册用户
 注册一个新用户与创建一个新的普通对象之间的不同点在于其username和password字段都是必要的，password字段会以与其他的字段不一样的方式处理，它在保存时会被加密而且永远不会被返回给任何来自客户端的请求。
 
-在你的应用设置页面中，你可以向[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")来请求认证邮件地址，这项设置启用了的话，所有用户在注册时填写email这个Key的值，并且邮箱有效的情况下，就会向这个邮箱地址发出一封邮件，邮件中会包含一个来自[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")的邮箱验证的链接，当你的用户查收邮件并点击这个链接后，这个用户emailVerified的Key的值会置为True，你可以在emailVerified字段上查看用户的email是否已经通过验证了。
+在你的应用设置页面中，你可以向[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")来请求认证邮件地址，这项设置启用了的话，所有用户在注册时填写email这个Key的值，并且邮箱有效的情况下，就会向这个邮箱地址发出一封邮件，邮件中会包含一个来自[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")的邮箱验证的链接，当你的用户查收邮件并点击这个链接后，这个用户emailVerified的Key的值会置为True，你可以在emailVerified字段上查看用户的email是否已经通过验证了。
 
 为了注册一个新的用户，需要向user路径发送一个POST请求，你可以加入一个甚至多个新的字段，例如，创建一个有家庭电话字段的新用户:
 
@@ -970,7 +959,7 @@ $res = $bmobUser->register(array("username"=>"cooldude117", "password"=>"p_n7!-e
 
 ```
 Status: 201 Created
-Location: https://api.bmob.cn/1/users/Kc3M222J
+Location: https://api.codenow.cn/1/users/Kc3M222J
 ```
 
 返回的主体是包含objectId，表示唯一的用户, createdAt时间戳表示用户注册时间, sessionToken可以被用来认证更新或删除这名用户信息的请求。
@@ -986,7 +975,7 @@ Location: https://api.bmob.cn/1/users/Kc3M222J
 
 ### 使用手机号码一键注册或登陆
 
-[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台") 支持让用户直接输入手机号码进行注册，如果手机号码存在则自动登陆：
+[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台") 支持让用户直接输入手机号码进行注册，如果手机号码存在则自动登陆：
 ```
  $res = $bmobUser->register(array("mobilePhoneNumber"=>"131xxxxxxxx", "smsCode"=>"502845"));
 ```
@@ -1017,7 +1006,7 @@ $res = $bmobUser->login("test111@qq.com","111111");
 
 username 支持传入_User表的username或email或mobilePhoneNumber字段的值，作为登录的扩展功能，以实现邮箱和密码、手机号和密码登录功能。
 
-除了有用户名或邮箱或手机号码和密码登录的功能，[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台") 还支持使用手机号码和验证码一键快速登录的功能，而 **smsCode** 是使用[请求短信验证码方法](BmobSms中的sendSms)发送到用户手机上的 6位验证码字符串：
+除了有用户名或邮箱或手机号码和密码登录的功能，[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台") 还支持使用手机号码和验证码一键快速登录的功能，而 **smsCode** 是使用[请求短信验证码方法](BmobSms中的sendSms)发送到用户手机上的 6位验证码字符串：
 
 ```
 $res = $bmobUser->loginByMobile("131xxxxxxxx","745399");
@@ -1089,7 +1078,7 @@ $res = $bmobUser->updateByMasterKey("0290813a89", "e09fb5cbb5b825c78989504604c0d
 **在更新用户信息时，如果用户邮箱有变更并且在管理后台打开了邮箱验证选项的话，Bmob云后端同样会自动发动一封验证邮件给用户。**
 
 ### 删除用户
-为了在[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")上删除一个用户，可以向用户的URL上发送一个DELETE请求，前提是你必须填入sessiontoken以便认证授权，例子：
+为了在[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")上删除一个用户，可以向用户的URL上发送一个DELETE请求，前提是你必须填入sessiontoken以便认证授权，例子：
 
 ```
 $res = $bmobUser->delete("415b8fe99a", "050391db407114d9801c8f2788c6b25a"); // 删除id为415b8fe99a的用户, 第一参数是用户id, 第二个参数为sessiontoken,在用户登录或注册后获取, 必填
@@ -1197,11 +1186,11 @@ d365d5834061d9f6805047131893ae13：sessionToken
 
 
 ### 邮箱验证
-设置邮件验证是一个可选的应用设置, 这样可以对已经确认过邮件的用户提供一部分保留的体验，邮件验证功能会在用户(User)对象中加入emailVerified字段, 当一个用户的邮件被新添加或者修改过的话，emailVerified会默认被设为false，如果应用设置中开启了邮箱认证功能，[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")会对用户填写的邮箱发送一个链接, 这个链接可以把emailVerified设置为 true.
+设置邮件验证是一个可选的应用设置, 这样可以对已经确认过邮件的用户提供一部分保留的体验，邮件验证功能会在用户(User)对象中加入emailVerified字段, 当一个用户的邮件被新添加或者修改过的话，emailVerified会默认被设为false，如果应用设置中开启了邮箱认证功能，[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")会对用户填写的邮箱发送一个链接, 这个链接可以把emailVerified设置为 true.
 
 emailVerified 字段有 3 种状态可以考虑：
 
-**true** : 用户可以点击邮件中的链接通过[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")来验证地址，一个用户永远不会在新创建这个值的时候出现emailVerified为true。
+**true** : 用户可以点击邮件中的链接通过[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")来验证地址，一个用户永远不会在新创建这个值的时候出现emailVerified为true。
 
 **false** : 用户(User)对象最后一次被刷新的时候, 用户并没有确认过他的邮箱地址, 如果你看到emailVerified为false的话，你可以考虑刷新 用户(User)对象。
 
@@ -1272,7 +1261,7 @@ $res = $bmobUser->register($data);
 Bmob 会校验提供的 authData 是否有效，并检查是否已经有一个用户连接了这个 authData 服务。如果已经有用户存在并连接了同一个 authData，那么Http响应头将返回 200 OK 和详细信息 (包括用户的 sessionToken):
 ```
 Status: 200 OK
-Location: https://api.bmob.cn/1/users/Kc3M222J
+Location: https://api.codenow.cn/1/users/Kc3M222J
 ```
 返回的内容类似
 ```
@@ -1330,7 +1319,7 @@ $res = $bmobUser->update("415b8fe99a", "050391db407114d9801c8f2788c6b25a", $data
 
 ## ACL和角色
 
-数据安全是软件系统中最重要的组成部分，为了更好的保护应用数据的安全，Bmob在软件架构层面提供了应用层次、表层次、ACL（Access Control List：访问控制列表）、角色管理（Role）四种不同粒度的权限控制的方式，确保用户数据的安全（详细请查看[Bmob数据与安全页面](http://docs.bmob.cn/datasafety/index.html?menukey=otherdoc&key=datasafety)，了解Bmob如何保护数据安全）。
+数据安全是软件系统中最重要的组成部分，为了更好的保护应用数据的安全，Bmob在软件架构层面提供了应用层次、表层次、ACL（Access Control List：访问控制列表）、角色管理（Role）四种不同粒度的权限控制的方式，确保用户数据的安全（详细请查看[Bmob数据与安全页面](http://doc.bmobapp.com/other/data_safety/index.html)，了解Bmob如何保护数据安全）。
 
 其中，最灵活的方法是通过ACL和角色，它的思路是每一条数据有一个用户和角色的列表，以及这些用户和角色拥有什么样的许可权限。
 
@@ -1372,7 +1361,7 @@ array(
 
 #### 创建角色
 
-创建一个新角色的方法如下（固定POST数据到https://api.bmob.cn/1/roles中，且必须提供 `name` 字段）：
+创建一个新角色的方法如下（固定POST数据到https://api.codenow.cn/1/roles中，且必须提供 `name` 字段）：
 ```
     $bmobRole = new BmobRole();
     $res = $bmobRole->createRole(array("name"=>"Mo1derators", "ACL"=>array("*"=>array("read"=>true,"write"=>true)))); //创建角色
@@ -1403,7 +1392,7 @@ $res = $bmobRole->createRole($data);
 
 ```
 Status: 201 Created
-Location: https://api.bmob.cn/1/roles/51e3812D
+Location: https://api.codenow.cn/1/roles/51e3812D
 ```
 
 #### 获取角色
@@ -1723,7 +1712,7 @@ curl -X GET \
     -H "X-Bmob-REST-API-Key: Your REST API Key" \
     -G \
     --data-urlencode 'groupby=score' \
-    https://api.bmob.cn/1/classes/GameScore
+    https://api.codenow.cn/1/classes/GameScore
 
 $res=$bmobObj->get("",array('groupby=score'));
 ```
@@ -1747,7 +1736,7 @@ average(计算平均值)， max(计算最大值)，min(计算最小值)和sum查
 
 ## 云端代码
 
-相关云端代码的编写方式，请参考[云端代码开发文档](http://docs.bmob.cn/cloudcode/developdoc/index.html?menukey=develop_doc&key=develop_cloudcode)
+相关云端代码的编写方式，请参考[云端代码开发文档](http://doc.bmobapp.com/cloud_function/web/develop_doc/)
 
 ### 运行云端代码
 
@@ -1758,433 +1747,21 @@ $cloudCode = new BmobCloudCode('getMsgCode'); //调用名字为getMsgCode的云�
 $res = $cloudCode->get(array("name"=>"bmob")); //传入参数name，其值为bmob
 ```
 
-
-## 消息推送
-
-### 消息推送简介
-推送通知是让用户及时被通知、和你的应用保持联系的一种非常棒的方式，你可以快速而有效地通知到所有的用户，下面这个教程将会教你如何使用Bmob来推送消息。
-
-### 安装消息推送服务
-每一个Bmob的App被安装在用户的设备上后，如果要使用消息推送功能，Bmob SDK会自动生成一个Installation对象。Installation对象包含了推送所需要的所有信息。举例：一个棒球的App，你可以让用户订阅感兴趣的棒球队，然后及时将这个球队的消息推送给用户 。
-你可以使用 REST API，通过请求URL **/1/installations** 对Installation对象进行一系列操作，就像你存储和获取其他的普通对象，如GameScore对象一样。
-注意Installation对象一般只在Client SDK中进行修改，但REST API对于大量导入或导出订阅数据的Installation对象是极其有用的。
-
-Installation对象有几个系统默认的特殊字段来帮助你进行定位到设备等管理：
-- **badge** : iOS应用中右上角的图标标识，这不会在服务端进行自增，需要开发者自己实现自增统计
-- **channels** : 当前这个设备订阅的渠道名称数组
-- **timeZone** : 设备所在位置的时区， 如Asia/Shanghai，这个会在每个Installation对象更新时同步（只读）
-- **deviceType** : 设备的类型, 值为："ios" 或 "android" (只读)
-- **installationId** : Bmob使用的设备唯一号，Android设备是必须的，iOS可选 (只读)
-- **deviceToken** : iOS设备由Apple APNS生成的唯一性token标识 (只读)
-- **notificationUri** : Windows Phone设备由Windows Push Center生成的唯一性token标识
-
-### 保存 installation
-
-#### 保存iOS设备的deviceToken
-iOS设备通常使用deviceToken来对一台设备进行惟一标识。
-```
-
-$bmobPush = new BmobPush();
-$data=array(	
-	"deviceType"=>"ios",
-	"deviceToken"=>"abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789",
-	"channels"=>array("Giants")
-);
-$res = $bmobPush->addInstallations($data);
-
-```
-
-#### 保存Android设备的 installationId
-
-对于Android设备，[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")SDK会自动生成uuid作为installationId保存到 Bmob。 你可以使用以下REST API保存Android设备的installation ID。
-```
-
-$bmobPush = new BmobPush();
-$data=array(	
-	"deviceType"=>"android",
-	"installationId"=>"12345678-4312-1234-1234-1234567890ab",
-	"channels"=>array("Giants")
-);
-$res = $bmobPush->addInstallations($data);
-
-```
-你还可以更新Installation对象的更多属性，用来查询installationId，定制更通用的推送
-```
-$res = $bmobPush->updateInstallations("fdcc6a94c6",array("injuryReports"=>true)); //更新设备表
-
-```
-
-#### 保存Windows Phone设备的 notificationUri
-
-对于Windows Phone设备，[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")SDK会自动从Windows Push Center获取到notificationUri并保存到 Bmob。 你可以使用以下php sdk保存Windows Phone设备的notificationUri。
-```
-$data=array(	
-	"deviceType"=>"windows phone",
-	"notificationUri"=>"https://hk1.notify.live.net/unthrottledthirdparty/01.00/AQHgHh6EuwNtTa1TbwvaAjnmAgAAAAADEAAAAAQUZm52OkZDM0U5RDkxQzIzREJBNDYFBkFTRUEwMQ",
-	"channels"=>array("Giants")
-);
-    $res = $bmobPush->addInstallations($data);
-```
-
-### 订阅频道和退订
-
-#### 订阅频道
-
-覆盖已订阅的频道：
-```
-$res = $bmobPush->updateInstallations("fdcc6a94c6",array("channels"=>array("Giants")))
-```
-
-订阅一个新频道，不覆盖已订阅的频道：
-```
-$data = array(
-	"channels"=>array(
-		"__op"=>"AddUnique",
-		"objects"=>array("Giants"),
-	)
-);
-$res = $bmobPush->updateInstallations("fdcc6a94c6", $data);
-```
-#### 退订频道
-```
-$data = array(
-	"channels"=>array(
-		"__op"=>"Remove",
-		"objects"=>array("Giants"),
-	)
-);
-$res = $bmobPush->updateInstallations("fdcc6a94c6", $data);
-```
-
-### 广播推送消息
-```
-$res = $bmobPush->push(array("data"=>array("alert"=>"hello"))); 
-```
-
-### 组播推送消息
-发送给订阅了Giants频道的用户
-```
- $res = $bmobPush->push(array("data"=>array("alert"=>"hello"),"where"=>array("channels"=>array("Giants")))); 
-```
-
- 或者更简便的方式
-```
-$res = $bmobPush->push(array("data"=>array("alert"=>"hello"),"channels"=>array("Giants"))); 
-```
-
-### 多播推送消息
-#### 推送给不活跃的用户
-```
-$data = array(
-	"data"=>array("alert"=>"hello"),
-	"where"=>array("updatedAt"=>array(
-				"$lt"=>array("__type"=>"Date","iso"=>"2012-01-29 11:33:53"))
-			 )
-);
-
-$res = $bmobPush->push($data); 
-```
-
-#### 根据查询条件做推送
-
-```
-$res = $bmobPush->push(array("data"=>array("alert"=>"hello"),"where"=>array("scores"=>true))); 
-```
-请注意，where 条件查询的都是 installations 表。这里是假设 installations 表存储了 scores 的布尔属性，你可以像查询普通对象一样构造where查询
-
-#### 根据平台做推送
-```
-$res = $bmobPush->push(array("data"=>array("alert"=>"hello"),"where"=>array("deviceType"=>"android"))); 
-```
-```
-$res = $bmobPush->push(array("data"=>array("alert"=>"hello"),"where"=>array("deviceType"=>"ios"))); 
-```
-
-Windows Phone平台的推送分三种格式：
-
-a.推送Raw通知(**默认**)：
-
-```
-$data = array(
-	"data"=>array("alert"=>"hello", "wpAlert"=>"TextBoxValue2"),
-	"where"=>array("deviceType"=>"windows phone")
-);
-
-$res = $bmobPush->push($data); 
-```
-
-b.推送Toast通知：
-
-```
-$data = array(
-	"data"=>array("alert"=>"hello",
-				  "wpAlert"=>"TextBoxValue2",
-				   "wp"=> 2),
-	"where"=>array("deviceType"=>"windows phone")
-);
-
-$res = $bmobPush->push($data); 
-
-```
-
-c.推送磁贴通知：
-
-```
-$data = array(
-	"data"=>array("alert"=>"hello",
-				  "backgroundImage"=>"backgroundImage",
-				  "count"=> 2,
-				  "backBackgroundImage"=>"backBackgroundImage",				
-				  "backTitle"=>"backTitle",
-				  "backContent"=>"backContent",
-				  "wp"=>1,
-				),
-	"where"=>array("deviceType"=>"windows phone")
-);
-
-$res = $bmobPush->push($data); 
-```
-
-#### 根据地理信息位置做推送
-```
-
-$data = array(
-	"data"=>array("alert"=>"hello"),
-	"where"=>array("user"=>array(
-							 "$inQuery"=>array(
-									"location"=>array("$nearSphere"=>array(
-																																								"__type"=>"GeoPoint",
-															"latitude"=>30.0,
-															"longitude"=>-20.0,
-																				),
-													 "$maxDistanceInMiles"=>1.0
-													)
-									)
-			 			   )
-			       )
-);
-
-$res = $bmobPush->push($data); 
-
-```
-
-上面的例子假设 installation 有个 user 属性指向_User 表的记录，并且用户有个 location 属性是 GeoPoint 类型，我们就可以根据地理信息位置做推送。
-
-### 点播推送消息
-发送给Android单个客户端
-```
-$data = array(
-	"data"=>array("alert"=>"hello"),
-	"where"=>array("installationId"=>"57234d4c-752f-4e78-81ad-a6d14048020d")
-);
-
-$res = $bmobPush->push($data); 
-
-```
-发送给iOS单个客户端
-
-```
-$data = array(
-	"data"=>array("aps"=>array("alert"=>"cashi","badge"=>1,"sound"=>"default")),
-	"where"=>array("deviceToken"=>"abcdef0123456789abcdef0123456789abcdef0123456789abcdef012345678")
-);
-
-$res = $bmobPush->push($data); 
-```
-
-发送给Windows Phone单个客户端Toast通知
-```
-$data = array(
-	"data"=>array("alert"=>"cashi","wpAlert"=>"bmob","wp"=>2),
-	"where"=>array("notificationUri"=>"https://hk1.notify.live.net/unthrottledthirdparty/01.00/AQHgHh6EuwNtTa1TbwvaAjnmAgAAAAADEAAAAAQUZm52OkZDM0U5RDkxQzIzREJBNDYFBkFTRUEwMQ")
-);
-
-$res = $bmobPush->push($data); 
-```
-
-
-### 发送选项设置
-推送通知不仅仅可以用来发送消息，iOS中，推送内容还可以包含要播放的声音和要显示的badge数字值,还可以定制任何你想发送的内容，对于Android，你甚至可以指定Intent应用于接收消息，对于时效有要求的消息你还可以设置一个消息过期时间。
-
-#### 定制你的通知
-如果你想发送更多的消息，你可以在data的字典对象中设置其他字段，下面这些保留的字段有其特殊的意义：
-- **alert** : 通知的消息内容
-- **badge** : (仅iOS)一个数字值将会高亮显示在应用图标的右上角。
-- **sound** : (仅iOS)应用绑定包中的声音
-- **content-available** : (仅iOS)如果你的应用是新闻类的，或者你的应用正在使用iOS7的Remote Notification Background Mode，设定这个值为1将会触发离线下载功能。
-- **action** : (仅Android)接收到推送消息时应用Intent，如果没有指定title或alert，Intent将被应用，但是没有通知呈现给用户。
-- **title** : (仅Android)这个值将显示在系统通知栏
-- **wp** : (仅Windows Phone)通知类型 0-Raw(默认) 1-Toast 2-磁贴
-- **wpAlert** : (仅Windows Phone)这个值将在Raw 和 Toast两种通知中有用，相对alert，作为子标题
-- **backgroundImage** : (仅Windows Phone)通知类型wp=2，磁贴类通知中有用
-- **count** : (仅Windows Phone)通知类型wp=2，磁贴类通知中有用
-- **backBackgroundImage** : (仅Windows Phone)通知类型wp=2，磁贴类通知中有用
-- **backTitle** : (仅Windows Phone)通知类型wp=2，磁贴类通知中有用
-- **backContent** : (仅Windows Phone)通知类型wp=2，磁贴类通知中有用
-
-例如，推送一条通知，将当前的badge值设置为一个数字值,并且播放iOS设备上定制的音乐，对于Android用户，将在系统通知栏中显示特殊的标题，其请求如下：
-```
-$data = array(
-	"data"=>array("alert"=>"cashi","badge"=>10,"sound"=>"cheering.caf","title"=>"Mets Score!"),
-	"channels"=>array("Mets")
-);
-
-$res = $bmobPush->push($data); 
-```
-
-当然，你也可以在data字典对象中定制自己的字段来推送消息，但推送到消息不显示在 Andoid 系统的通知栏中，而是执行应用程序预定义的逻辑，Android或iOS的接收消息文档中对此有说明，iOS只有当用户从通知中打开应用，才能访问data的数据，Android将提供这个数据在action Intent应用之后将提供这个数据,
-```
-$data = array(
-	"data"=>array("alert"=>"cashi","action"=>"com.example.UPDATE_STATUS","name"=>"Vaughn"),
-	"channels"=>array("Mets")
-);
-
-$res = $bmobPush->push($data); 
-
-```
-
-#### 设置消息过期时间 
-
-过期时间，可以是绝对时间：
-```
-$data = array(
-	"data"=>array("alert"=>"cashi"),
-	"expiration_time"=>"2013-12-04 00:51:13"
-);
-
-$res = $bmobPush->push($data); 
-```
-
-也可以是相对时间（根据push_time做定期推送，从push_time时间开始算起，直到expiration_interval时间后过期），下面的请求表示消息将在2012-01-28 00:51:13这个时间点开始推送，直到7天后过期:
-```
-$data = array(
-    "data"=>array("alert"=>"cashi"),
-    "push_time"=>"2012-01-28 00:51:13",
-    "expiration_interval"=>518400,
-);
-
-$res = $bmobPush->push($data); 
-```
-
-## 支付服务
-
-### 网页端调起支付宝支付接口
-
-PHP等Web开发语言可使用以下接口调起支付宝的支付接口，PHP开发者可参考：[Bmob PHP SDK](https://github.com/bmob/bmob-php-sdk "Bmob PHP SDK")  仓库的pay目录下的payapi.php文件编写该接口。
-```
-$bmobPay = new BmobPay();
-$res = $bmobPay->webPay(0.01, "充值", "给应用充值0.01元");
-
-//调起Web支付接口，返回的html，输出在此页面中，将自动跳转到支付宝支付页面。
-$html = "";
-$html = $res->html;
-echo $html;
-```
-成功后输出$res->html就能将自动跳转到支付宝支付页面。, 失败时返回请看 [支付功能相关错误码](/errorcode/index.html?menukey=otherdoc&key=errorcode#index_支付功能相关错误码 "支付功能相关错误码")
-
-将以上返回的html内容输出到你的Web页面上，将会自动跳转至支付宝收银台。
-
-关于移动端如何使用支付功能，请查看 [Android支付SDK](/androidpay/index.html?menukey=fast_start&key=start_android_pay "Android支付SDK") 或 [iOS支付SDK](/iospay/index.html?menukey=fast_start&key=start_ios_pay "iOS支付SDK")。
-
-### 查询订单
-```
-$bmobPay = new BmobPay();
-$res = $bmobPay->getOrder("fd343232cc6a94c6");  //查询订单
-
-```
-
-成功返回以下JSON, 失败时返回请看 [支付功能相关错误码](/errorcode/index.html?menukey=otherdoc&key=errorcode#index_支付功能相关错误码 "支付功能相关错误码")
-```
-array(
-  "name"=>"商品",
-  "body"=> "商品详情",
-  "create_time"=> "2015-03-24 11:14:58",
-  "out_trade_no"=> "9f392618f449a71c6fcfdee38d2b29e4",
-  "transaction_id"=> "2015061100001000330057820379"
-  "pay_type"=> "WECHATPAY",
-  "total_fee"=> 0.01,
-  "trade_state"=> "NOTPAY",
-)
-```
-
-返回的信息简单描述如下：
-name-订单或商品名称 
-body-商品详情  
-create_time - 调起支付的时间  
-out_trade_no-Bmob系统的订单号  
-transaction_id-微信或支付宝的系统订单号
-pay_type-WECHATPAY（微信支付）或ALIPAY（支付宝支付） 
-total_fee - 订单总金额  
-trade_state-NOTPAY（未支付）或 SUCCESS（支付成功）
-
-### Bmob支付回调
-Bmob 加入了支付后页面跳转同步通知页面的URL和异步的通知URL功能，可供开发者在应用的设置页面自行增加。
-
-填写页面跳转同步通知页面的URL(return_url)和异步的通知URL(notify_url)的页面在 应用列表->应用信息->支付设置 。
-
-#### Bmob异步通知回调（支持微信和支付宝）
-
-1. 必须保证服务器异步通知页面（notify_url）上无任何字符，如空格、HTML标签、开发系统自带抛出的异常提示信息等；
-
-2. Bmob支付是用POST方式发送异步通知信息，因此该页面中获取参数的方式，如：
-request.Form(“out_trade_no”)、$_POST[‘out_trade_no’]；
-
-3. 支付宝主动发起通知，该方式才会被启用；
-
-4.  只有在Bmob的交易管理中存在该笔交易，且发生了交易状态的改变，Bmob才会通过该方式发起服务器通知；
-
-5. 服务器间的交互，不像页面跳转同步通知可以在页面上显示出来，这种交互方式是不可见的；
-
-6. 第一次交易状态改变（即时到账中此时交易状态是交易完成）时，不仅页面跳转同步通知页面会启用，而且服务器异步通知页面也会收到Bmob发来的处理结果通知；
-
-7. 程序执行完后必须打印输出“success”（不包含引号）。如果商户反馈给Bmob的字符不是success这7个字符，Bmob服务器会不断重发通知，直到超过24小时。
-
-8. 一般情况下，24小时以内完成8次通知（通知的间隔频率一般是：2m,10m,10m,1h,2h,6h,15h）；
-
-9. 程序执行完成后，该页面不能执行页面跳转。如果执行页面跳转，Bmob会收不到success字符，会被Bmob服务器判定为该页面程序运行出现异常，而重发处理结果通知；
-
-10. 异步通URL的调试与运行必须在服务器上，即互联网上能访问；
-
-11. 当用户的服务端收到Bmob服务器异步通知的$_POST[‘out_trade_no’]时，应该调起一次查询订单的接口获得订单的状态是1，才能准确的判断该笔订单是成功;
-
-12. 支付成功结果以Bmob后台订单列表或查询订单接口查询到的订单状态为准。
-
-
-#### Bmob页面跳转同步通知页面（只支持支付宝）
-
-1. 用户在支付成功后会看到一个支付宝提示的页面，该页面会停留几秒，然后会自动跳转回商户指定的同步通知页面（参数return_url）。
-
-2. 该页面中获得参数的方式，需要使用GET方式获取，如request.QueryString(“out_trade_no”)、$_GET[‘out_trade_no’]。
-
-3. 该方式仅仅在用户支付完成以后进行自动跳转，因此只会进行一次。
-
-4. 该方式不是支付宝主动去调用商户页面，而是支付宝的程序利用页面自动跳转的函数，使用户的当前页面自动跳转。
-
-5. 该方式可在本机而不是只能在服务器上进行调试。
-
-6. 返回URL只有一分钟的有效期，超过一分钟该链接地址会失效，验证则会失败。
-
-7. 设置页面跳转同步通知页面（return_url）的路径时，不要在页面文件的后面再加上自定义参数。例如：
-```
-错误的写法：http://www.bmob.cn/pay/return_url.php?xx=11
-正确的写法：http://www.bmob.cn/pay/return_url.php
-```
-
 ## 短信服务
 
 在一些应用场景下，你可能希望用户验证手机号码后才能进行一些操作，例如充值等。这些操作跟用户系统没有关系，可以通过我们提供的的短信验证API来实现。
 
-每个 [Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台") 帐户有 100 个免费额度的短信数量，超过需要购买短信条数才能继续使用。
+每个 [Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台") 帐户有 100 个免费额度的短信数量，超过需要购买短信条数才能继续使用。
 
-为了保障短信的下发速度和送达率，[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台") 为所有用户申请了一致的独享通道，默认使用 **【云验证】** 作为签名，且不可更改。
+为了保障短信的下发速度和送达率，[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台") 为所有用户申请了一致的独享通道，默认使用 **【云验证】** 作为签名，且不可更改。
 
 ### 请求发送短信内容
 
-这个接口可让开发者使用  [Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台") 的短信功能灵活发送短信内容到用户的手机上。
+这个接口可让开发者使用  [Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台") 的短信功能灵活发送短信内容到用户的手机上。
 
-此接口必须要开发者在后台提交身份证信息，在([Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台")》账户管理》身份验证) 中填写，并通过了我们的审核后才可以使用。
+此接口必须要开发者在后台提交身份证信息，在([Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台")》账户管理》身份验证) 中填写，并通过了我们的审核后才可以使用。
 
-请不要发送任何敏感内容，一经发现，[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台") 有权立刻停止您的该接口使用权。
+请不要发送任何敏感内容，一经发现，[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台") 有权立刻停止您的该接口使用权。
 
 
 输入手机号码、短信内容，就可以给用户的手机号码发送自定义的短信内容了，以下的content只要在不违反相关规定的前提下，你可以随意输入：
@@ -2207,7 +1784,7 @@ array(
 ```
 
 ### 请求短信验证码
-如果没有在管理后台创建好模板，可使用默认的模板，[Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台") 默认的模板是: **您的验证码是%smscode%，有效期为%ttl%分钟。您正在使用%appname%的验证码**
+如果没有在管理后台创建好模板，可使用默认的模板，[Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台") 默认的模板是: **您的验证码是%smscode%，有效期为%ttl%分钟。您正在使用%appname%的验证码**
 
 使用默认的模板请求短信验证码：
 ```
@@ -2221,7 +1798,7 @@ array(
 )
 ```
 
-如果你已经在 [Bmob](http://www.bmob.cn/ "Bmob移动后端云服务平台") 后台设置了自己的模板，并已经是审核通过了，则可以使用自己的模板给用户的手机号码发送短信验证码了：
+如果你已经在 [Bmob](https://www.bmobapp.com/ "Bmob移动后端云服务平台") 后台设置了自己的模板，并已经是审核通过了，则可以使用自己的模板给用户的手机号码发送短信验证码了：
 ```
 $res = $bmobSms->sendSmsVerifyCode("131xxxxxxxx", "注册模板");  //发送短信验证码
 ```

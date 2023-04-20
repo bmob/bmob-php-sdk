@@ -21,8 +21,7 @@ Bmob PHP SDK开发文档
 class BmobConfig{
 	const APPID = '';       //替换后台"应用密钥"中的Application ID
 	const RESTKEY = '';     //后台"应用密钥"中的REST API Key
-	const BMOBURL = 'https://api.bmob.cn/1/';   //保持不变
-    const BMOBURLTWO = 'https://api.bmob.cn/2/';   //保持不变
+	//其他信息保持不变
 
 }
 ```
@@ -115,8 +114,6 @@ Bmob云端代码调用类
 
 # Bmob官方信息
 
-官方网址：[http://www.bmob.cn](http://www.bmob.cn)
+官方网址：[https://www.bmobapp.com/](https://www.bmobapp.com/)
 
-问答社区：[http://wenda.bmob.cn](http://wenda.bmob.cn)
-
-技术邮箱：support@bmob.cn
+技术邮箱：support@bmobapp.com
