@@ -5,8 +5,6 @@ include_once 'lib/BmobBatch.class.php';
 include_once 'lib/BmobFile.class.php';
 include_once 'lib/BmobImage.class.php';
 include_once 'lib/BmobRole.class.php';
-include_once 'lib/BmobPush.class.php';
-include_once 'lib/BmobPay.class.php';
 include_once 'lib/BmobSms.class.php';
 include_once 'lib/BmobApp.class.php';
 include_once 'lib/BmobSchemas.class.php';
